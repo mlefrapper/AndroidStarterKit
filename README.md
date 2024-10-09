@@ -22,3 +22,7 @@ You can run Spotless to format your code using the following Gradle command:
 bash ./gradlew spotlessApply
 
 This will apply the formatting rules defined in the 'spotless' block.
+
+## Gradle plugins
+This project utilizes the following Gradle plugins:
+* **easylauncher-gradle-plugin:** This plugin simplifies the creation and management of adaptive launcher icons for Android. It automates the generation of different icon sizes and densities required for various launcher configurations.
