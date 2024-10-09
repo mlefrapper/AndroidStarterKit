@@ -14,15 +14,16 @@
 ### Installation
 
 ## Code style and formatting (spotless)
-This project uses Spotless to ensure consistent code style and formatting. Spotless is a Gradle plugin that automatically formats your code according to predefined rules.
 
 **Running spotless**
-You can run Spotless to format your code using the following Gradle command:
 
-bash ./gradlew spotlessApply
 
 This will apply the formatting rules defined in the 'spotless' block.
 
 ## Gradle plugins
 This project utilizes the following Gradle plugins:
+
+* **spotless:** Spotless is a Gradle plugin that automatically formats your code according to predefined rules. You can run Spotless to format your code using the following Gradle command:
+`./gradlew spotlessApply`
+
 * **easylauncher-gradle-plugin:** This plugin simplifies the creation and management of adaptive launcher icons for Android. It automates the generation of different icon sizes and densities required for various launcher configurations.
