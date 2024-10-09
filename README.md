@@ -8,3 +8,7 @@
 - [Timber](https://github.com/JakeWharton/timber): A logger with a small, extensible API.
 
 ## Architecture
+
+## Getting started
+
+### Installation
