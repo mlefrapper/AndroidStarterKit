@@ -1,4 +1,4 @@
-package com.mlefrapper.androidstarterkit.util
+package com.mlefrapper.core.util
 
 import android.util.Log
 import timber.log.Timber

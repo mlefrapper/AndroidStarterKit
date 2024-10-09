@@ -1,7 +1,7 @@
 package com.mlefrapper.androidstarterkit
 
 import android.app.Application
-import com.mlefrapper.androidstarterkit.util.ReleaseTimberTree
+import com.mlefrapper.core.util.ReleaseTimberTree
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

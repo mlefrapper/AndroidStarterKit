@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AndroidStarterKit"
 include(":app")
- 
+include(":core")
