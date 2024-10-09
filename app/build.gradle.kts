@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("com.starter.easylauncher") version "6.4.0"
 }
 
 android {
@@ -54,6 +55,8 @@ android {
         }
     }
 }
+
+apply(from = "$projectDir/gradle/easylauncher.gradle")
 
 dependencies {
 

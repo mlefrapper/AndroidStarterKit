@@ -1,0 +1,11 @@
+easylauncher {
+    buildTypes {
+        debug {
+            filters = customRibbon(ribbonColor: "#EC1D24", label: "DEBUG")
+        }
+    }
+
+    productFlavors {
+
+    }
+}
