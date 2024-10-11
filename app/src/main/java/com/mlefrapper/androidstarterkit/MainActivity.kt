@@ -3,45 +3,60 @@ package com.mlefrapper.androidstarterkit
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowCompat
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.mlefrapper.androidstarterkit.presentation.home.components.DestinationsNavHost
+import com.mlefrapper.androidstarterkit.presentation.navigation.BottomBarDestination
+import com.mlefrapper.androidstarterkit.presentation.navigation.BottomNavigationBar
 import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             AndroidStarterKitTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                    )
+                val navController = rememberNavController()
+
+                val shouldShowBottomBar = navController
+                    .currentBackStackEntryAsState().value?.destination?.route in BottomBarDestination.entries
+                    .map { it.route }
+
+                Scaffold(
+                    bottomBar = {
+                        if (shouldShowBottomBar) {
+                            BottomNavigationBar(
+                                navController = navController,
+                                items = BottomBarDestination.entries,
+                                onItemClick = {
+                                    navController.navigate(it.route) {
+                                        navController.graph.startDestinationRoute?.let { route ->
+                                            popUpTo(route) {
+                                                saveState = true
+                                            }
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                },
+                            )
+                        }
+                    },
+                ) {
+                    Box(modifier = Modifier.padding(it)) {
+                        DestinationsNavHost(
+                            navController = navController,
+                        )
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AndroidStarterKitTheme {
-        Greeting("Android")
     }
 }
