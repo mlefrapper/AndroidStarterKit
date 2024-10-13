@@ -11,15 +11,23 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ColumnScope.Gap(size: Dp) {
-    Gap(vertical = size)
+    Gap(height = size)
 }
 
 @Composable
 fun RowScope.Gap(size: Dp) {
-    Gap(horizontal = size)
+    Gap(width = size)
 }
 
 @Composable
-fun Gap(horizontal: Dp = 0.dp, vertical: Dp = 0.dp) {
-    Spacer(Modifier.size(horizontal, vertical))
+fun Gap(
+    width: Dp = 0.dp,
+    height: Dp = 0.dp
+) {
+    Spacer(
+        Modifier.size(
+            width = width,
+            height = height
+        )
+    )
 }

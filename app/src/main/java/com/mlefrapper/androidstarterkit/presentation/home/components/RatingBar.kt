@@ -52,10 +52,16 @@ private fun RatingStar(
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxHeight()
-            .aspectRatio(1f)
-            .clip(starShape),
+            .aspectRatio(
+                ratio = 1f
+            )
+            .clip(
+                shape = starShape
+            ),
     ) {
-        Canvas(modifier = Modifier.size(maxHeight)) {
+        Canvas(
+            modifier = Modifier.size(maxHeight)
+        ) {
             drawRect(
                 brush = SolidColor(backgroundColor),
                 size = Size(

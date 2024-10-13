@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mlefrapper.androidstarterkit.R
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral20
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral50
 
@@ -22,16 +24,29 @@ import com.mlefrapper.androidstarterkit.ui.theme.Neutral50
 fun SeeMoreCard(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(100.dp))
-            .border(width = 1.dp, color = Neutral20, shape = RoundedCornerShape(100.dp))
+            .clip(
+                shape = RoundedCornerShape(
+                    size = 100.dp
+                )
+            )
+            .border(
+                width = 1.dp,
+                color = Neutral20,
+                shape = RoundedCornerShape(
+                    size = 100.dp
+                )
+            )
             .background(Color.White)
             .clickable { },
     ) {
         Text(
-            text = "See more",
+            text = stringResource(id = R.string.see_more),
             style = MaterialTheme.typography.bodySmall,
             color = Neutral50,
-            modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp),
+            modifier = Modifier.padding(
+                vertical = 4.dp,
+                horizontal = 8.dp
+            ),
         )
     }
 }

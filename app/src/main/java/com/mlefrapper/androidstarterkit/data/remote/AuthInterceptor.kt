@@ -10,9 +10,13 @@ class AuthInterceptor : Interceptor {
         val originalRequest = chain.request()
         val url = originalRequest.url.newBuilder()
             .addQueryParameter(
-                "key",
+                API_KEY,
                 BuildConfig.API_KEY,
             ).build()
         return chain.proceed(originalRequest.newBuilder().url(url).build())
+    }
+
+    companion object {
+        private const val API_KEY = "key"
     }
 }

@@ -24,8 +24,12 @@ fun TagGroup(
 
     FlowRow(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.spacedBy(
+            space = 8.dp
+        ),
+        verticalArrangement = Arrangement.spacedBy(
+            space = 8.dp
+        ),
     ) {
         repeat(if (isLimited) limitedGenres else tag.size) {
             TagChip(name = tag[it])

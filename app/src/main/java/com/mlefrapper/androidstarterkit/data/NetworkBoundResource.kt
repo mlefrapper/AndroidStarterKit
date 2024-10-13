@@ -33,13 +33,13 @@ abstract class NetworkBoundResource<ResultType : Any, RequestType> {
                     )
                 }.suspendOnError {
                     val error = when (statusCode) {
-                        StatusCode.InternalServerError -> "InternalServerError"
-                        StatusCode.BadGateway -> "BadGateway"
+                        StatusCode.InternalServerError -> INTERNAL_SERVER_ERROR
+                        StatusCode.BadGateway -> BAD_GATEWAY_ERROR
                         else -> "$statusCode(${statusCode.code}): ${message()}"
                     }
                     emit(Resource.Error(error))
                 }.suspendOnException {
-                    emit(Resource.Error("Oops, something went wrong!"))
+                    emit(Resource.Error(SOMETHING_WENT_WRONG_ERROR))
                 }
             }
         } else {
@@ -62,4 +62,10 @@ abstract class NetworkBoundResource<ResultType : Any, RequestType> {
     protected abstract suspend fun saveCallResult(data: RequestType)
 
     fun asFlow(): Flow<Resource<ResultType>> = result
+
+    companion object {
+        private const val INTERNAL_SERVER_ERROR = "Internal Server Error"
+        private const val BAD_GATEWAY_ERROR = "Bad Gateway"
+        private const val SOMETHING_WENT_WRONG_ERROR = "Oops, something went wrong!"
+    }
 }

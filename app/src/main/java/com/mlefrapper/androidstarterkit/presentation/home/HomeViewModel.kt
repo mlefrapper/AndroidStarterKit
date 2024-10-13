@@ -35,7 +35,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         getAllGamesUseCase.execute().onEach { result ->
             when (result) {
                 is Resource.Error -> {
-                    Timber.e("error : $result.message")
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -44,7 +43,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     }
                 }
                 is Resource.Loading -> {
-                    Timber.e("loading")
                     _uiState.update {
                         it.copy(
                             isLoading = true,
@@ -52,7 +50,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     }
                 }
                 is Resource.Success -> {
-                    Timber.e("success")
                     _uiState.update {
                         it.copy(
                             games = result.data,
@@ -69,7 +66,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         getHotGamesUseCase.execute().onEach { result ->
             when (result) {
                 is Resource.Error -> {
-                    Timber.e("error : $result.message")
                     _uiState.update {
                         it.copy(
                             isLoading = false,
@@ -78,7 +74,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     }
                 }
                 is Resource.Loading -> {
-                    Timber.e("loading")
                     _uiState.update {
                         it.copy(
                             isLoading = true,
@@ -86,7 +81,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     }
                 }
                 is Resource.Success -> {
-                    Timber.e("success")
                     _uiState.update {
                         it.copy(
                             hotGames = result.data,

@@ -27,18 +27,24 @@ fun BookmarkScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp),
+            .padding(
+                horizontal = 24.dp
+            ),
         contentPadding = PaddingValues(vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         item {
             Text(
-                text = stringResource(id = R.string.title_bookmark),
+                text = stringResource(
+                    id = R.string.title_bookmark
+                ),
                 style = MaterialTheme.typography.headlineMedium,
                 color = Primary50,
             )
             Text(
-                text = stringResource(id = R.string.label_bookmark_description),
+                text = stringResource(
+                    id = R.string.label_bookmark_description
+                ),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Neutral50,
             )

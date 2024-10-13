@@ -30,9 +30,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.mlefrapper.androidstarterkit.R
 import com.mlefrapper.androidstarterkit.components.Gap
 import com.mlefrapper.androidstarterkit.domain.model.Game
 import com.mlefrapper.androidstarterkit.presentation.detail.components.GamePoster
@@ -43,7 +45,9 @@ import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral40
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral50
 import com.mlefrapper.androidstarterkit.ui.theme.Primary70
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination
 @Composable
 fun DetailScreen(
     game: Game,
@@ -64,7 +68,9 @@ fun DetailScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState()),
+            .verticalScroll(
+                state = rememberScrollState()
+            ),
     ) {
         state.game?.let { game ->
             Column(
@@ -75,9 +81,18 @@ fun DetailScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .background(Color.White)
-                        .padding(24.dp),
+                        .clip(
+                            shape = RoundedCornerShape(
+                                topStart = 20.dp,
+                                topEnd = 20.dp
+                            )
+                        )
+                        .background(
+                            color = Color.White
+                        )
+                        .padding(
+                            all = 24.dp
+                        ),
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -90,7 +105,9 @@ fun DetailScreen(
                             color = Primary70,
                             modifier = Modifier.weight(1F),
                         )
-                        Gap(size = 8.dp)
+                        Gap(
+                            size = 8.dp
+                        )
                         Icon(
                             imageVector = if (savedState) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                             contentDescription = null,
@@ -105,31 +122,51 @@ fun DetailScreen(
                                 ),
                         )
                     }
-                    Gap(size = 8.dp)
-                    GeneralGameInfo(game = game)
-                    Gap(size = 24.dp)
+                    Gap(
+                        size = 8.dp
+                    )
+                    GeneralGameInfo(
+                        game = game
+                    )
+                    Gap(
+                        size = 24.dp
+                    )
                     Text(
-                        text = "Description",
+                        text = stringResource(
+                            id = R.string.description
+                        ),
                         style = MaterialTheme.typography.titleMedium,
                         color = Primary70,
                     )
-                    Gap(size = 8.dp)
+                    Gap(
+                        size = 8.dp
+                    )
                     Text(
                         text = game.description.ifBlank { "-" },
                         style = MaterialTheme.typography.labelSmall,
                         color = Neutral50,
                     )
-                    Gap(size = 24.dp)
-                    Screenshots(urls = game.shortScreenshots)
+                    Gap(
+                        size = 24.dp
+                    )
+                    Screenshots(
+                        urls = game.shortScreenshots
+                    )
                     if (game.tags.isNotEmpty()) {
-                        Gap(size = 24.dp)
+                        Gap(
+                            size = 24.dp
+                        )
                         Text(
-                            text = "Tag",
+                            text = stringResource(id = R.string.tag),
                             style = MaterialTheme.typography.bodyMedium,
                             color = Neutral40,
                         )
-                        Gap(size = 8.dp)
-                        TagGroup(tag = game.tags.take(8))
+                        Gap(
+                            size = 8.dp
+                        )
+                        TagGroup(
+                            tag = game.tags.take(8)
+                        )
                     }
                 }
             }

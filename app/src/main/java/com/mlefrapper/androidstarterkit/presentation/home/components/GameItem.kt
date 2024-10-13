@@ -51,10 +51,18 @@ fun GameItem(
             url = game.backgroundImage,
             modifier = Modifier
                 .fillMaxHeight()
-                .width(85.dp)
-                .clip(RoundedCornerShape(5.dp)),
+                .width(
+                    width = 85.dp
+                )
+                .clip(
+                    shape = RoundedCornerShape(
+                        5.dp
+                    )
+                ),
         )
-        Gap(size = 16.dp)
+        Gap(
+            size = 16.dp
+        )
         Column(
             modifier = Modifier.fillMaxWidth(),
         ) {
@@ -63,32 +71,49 @@ fun GameItem(
                 style = MaterialTheme.typography.bodyLarge,
                 color = Primary80,
             )
-            Gap(size = 8.dp)
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Gap(
+                size = 8.dp
+            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Icon(
                     imageVector = Icons.Filled.Star,
                     contentDescription = null,
                     tint = Yellow,
                     modifier = Modifier.size(12.dp),
                 )
-                Gap(size = 2.dp)
+                Gap(
+                    size = 2.dp
+                )
                 Text(
                     text = "${game.rating}/5",
                     style = MaterialTheme.typography.labelMedium,
                     color = Neutral60,
                 )
             }
-            Gap(size = 8.dp)
-            TagGroup(tag = game.genres, isLimited = true)
-            Gap(size = 8.dp)
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Gap(
+                size = 8.dp
+            )
+            TagGroup(
+                tag = game.genres,
+                isLimited = true
+            )
+            Gap(
+                size = 8.dp
+            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Icon(
                     imageVector = Icons.Default.DateRange,
                     contentDescription = null,
                     tint = Neutral40,
                     modifier = Modifier.size(12.dp),
                 )
-                Gap(size = 4.dp)
+                Gap(
+                    size = 4.dp
+                )
                 Text(
                     text = game.released.convertDateTo(ConverterDate.FULL_DATE),
                     style = MaterialTheme.typography.labelSmall,

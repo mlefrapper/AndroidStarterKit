@@ -17,7 +17,9 @@ import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme
 fun TagChip(name: String, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(100.dp),
+        shape = RoundedCornerShape(
+            size = 100.dp
+        ),
         color = Accent10,
     ) {
         Text(

@@ -14,7 +14,11 @@ fun DestinationsNavHost(
     navController: androidx.navigation.NavHostController,
     modifier: Modifier = Modifier,
 ) {
-    NavHost(navController = navController, startDestination = "Search", modifier = modifier) {
+    NavHost(
+        navController = navController,
+        startDestination = "Search",
+        modifier = modifier
+    ) {
         composable(
             route = BottomBarDestination.Home.route,
         ) { HomeScreen() }

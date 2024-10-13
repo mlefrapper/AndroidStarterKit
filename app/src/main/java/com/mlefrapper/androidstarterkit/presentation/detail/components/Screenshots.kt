@@ -9,8 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mlefrapper.androidstarterkit.R
 import com.mlefrapper.androidstarterkit.components.Gap
 import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme
 import com.mlefrapper.androidstarterkit.ui.theme.Primary70
@@ -23,11 +25,15 @@ fun Screenshots(
 ) {
     Column(modifier = modifier) {
         Text(
-            text = "Screenshots",
+            text = stringResource(
+                id = R.string.screenshots
+            ),
             style = MaterialTheme.typography.titleMedium,
             color = Primary70,
         )
-        Gap(size = 8.dp)
+        Gap(
+            size = 8.dp
+        )
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
         ) {
@@ -39,7 +45,9 @@ fun Screenshots(
                     url = it,
                     modifier = Modifier
                         .fillParentMaxWidth()
-                        .height(200.dp),
+                        .height(
+                            height = 200.dp
+                        ),
                 )
             }
         }

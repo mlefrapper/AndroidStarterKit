@@ -27,16 +27,23 @@ fun TopBar(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 24.dp),
+            .padding(
+                vertical = 8.dp,
+                horizontal = 24.dp
+            ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Image(
             painter = painterResource(id = R.drawable.ic_ghost),
             contentDescription = null,
             colorFilter = ColorFilter.tint(Primary50),
-            modifier = Modifier.size(56.dp),
+            modifier = Modifier.size(
+                size = 56.dp
+            ),
         )
-        Gap(size = 12.dp)
+        Gap(
+            size = 12.dp
+        )
         Column(
             modifier = Modifier.weight(1F),
         ) {
@@ -46,7 +53,7 @@ fun TopBar(modifier: Modifier = Modifier) {
                 color = Primary50,
             )
             Text(
-                text = "Largest Game Database",
+                text = stringResource(id = R.string.largest_game_database),
                 style = MaterialTheme.typography.bodyLarge,
                 color = Neutral50,
             )

@@ -95,6 +95,9 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.room.compiler)
 
+    implementation("io.github.raamcosta.compose-destinations:core:1.11.7")
+    kapt("io.github.raamcosta.compose-destinations:ksp:1.11.7")
+
     // Navigation compose
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)

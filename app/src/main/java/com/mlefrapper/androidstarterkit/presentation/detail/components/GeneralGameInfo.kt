@@ -15,8 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mlefrapper.androidstarterkit.R
 import com.mlefrapper.androidstarterkit.components.Gap
 import com.mlefrapper.androidstarterkit.domain.model.Game
 import com.mlefrapper.androidstarterkit.presentation.home.components.RatingBar
@@ -41,15 +43,21 @@ fun GeneralGameInfo(
         ) {
             Column {
                 Text(
-                    text = "Metascore",
+                    text = stringResource(
+                        id = R.string.metascore
+                    ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
                 Gap(size = 8.dp)
                 Box(
                     modifier = Modifier
-                        .size(36.dp)
-                        .clip(RoundedCornerShape(8.dp))
+                        .size(size = 36.dp)
+                        .clip(
+                            shape = RoundedCornerShape(
+                                size = 8.dp
+                            )
+                        )
                         .background(Accent10),
                 ) {
                     Text(
@@ -62,7 +70,9 @@ fun GeneralGameInfo(
             }
             Column {
                 Text(
-                    text = "Rating",
+                    text = stringResource(
+                        id = R.string.rating
+                    ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
@@ -70,37 +80,53 @@ fun GeneralGameInfo(
                 RatingBar(
                     rating = game.rating.toFloat(),
                     modifier = Modifier
-                        .height(16.dp),
+                        .height(height = 16.dp),
                 )
             }
         }
-        Gap(24.dp)
+        Gap(
+            size = 24.dp
+        )
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(40.dp),
+            horizontalArrangement = Arrangement.spacedBy(
+                space = 40.dp
+            ),
         ) {
             Column {
                 Text(
-                    text = "Released",
+                    text = stringResource(
+                        id = R.string.released
+                    ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
-                Gap(size = 8.dp)
+                Gap(
+                    size = 8.dp
+                )
                 Text(
-                    text = game.released.convertDateTo(ConverterDate.FULL_DATE),
+                    text = game.released.convertDateTo(
+                        desireFormat = ConverterDate.FULL_DATE
+                    ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral50,
                 )
             }
             Column {
                 Text(
-                    text = "Genre",
+                    text = stringResource(
+                        id = R.string.genre
+                    ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
-                Gap(size = 8.dp)
-                TagGroup(tag = game.genres)
+                Gap(
+                    size = 8.dp
+                )
+                TagGroup(
+                    tag = game.genres
+                )
             }
         }
     }

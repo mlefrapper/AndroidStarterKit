@@ -18,12 +18,16 @@ class GamesDataStore @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
 ) : GamesRepository {
+
     override fun getAllGames(): Flow<Resource<List<Game>>> =
         object : NetworkBoundResource<List<Game>, GamesResponseDto>() {
             override fun loadFromDB(): Flow<List<Game>> {
-                return localDataSource.getAllGames().map { games ->
-                    games.map { Game(it) }
-                }
+                return localDataSource.getAllGames()
+                    .map { games ->
+                        games.map {
+                            Game(it)
+                        }
+                    }
             }
 
             override fun shouldFetch(data: List<Game>?): Boolean =
@@ -35,7 +39,9 @@ class GamesDataStore @Inject constructor(
 
             override suspend fun saveCallResult(data: GamesResponseDto) {
                 localDataSource.insertGames(
-                    data.results?.map { GameEntity(it) }.orEmpty(),
+                    data.results?.map {
+                        GameEntity(it)
+                    }.orEmpty(),
                 )
             }
         }.asFlow()
@@ -43,9 +49,13 @@ class GamesDataStore @Inject constructor(
     override fun getHotGames(): Flow<Resource<List<Game>>> =
         object : NetworkBoundResource<List<Game>, GamesResponseDto>() {
             override fun loadFromDB(): Flow<List<Game>> {
-                return localDataSource.getHotGames().map { games ->
-                    games.map { Game(it) }
-                }
+                return localDataSource
+                    .getHotGames()
+                    .map { games ->
+                        games.map {
+                            Game(it)
+                        }
+                    }
             }
 
             override fun shouldFetch(data: List<Game>?): Boolean =
@@ -53,16 +63,21 @@ class GamesDataStore @Inject constructor(
 
             override suspend fun createCall(): ApiResponse<GamesResponseDto> {
                 return remoteDataSource.getAllGames(
-                    dates = getDateRange(range = Range.MONTH, isPast = true),
-                    ordering = "-rating",
-                    page = 1,
-                    pageSize = 10,
+                    dates = getDateRange(
+                        range = Range.MONTH,
+                        isPast = true
+                    ),
+                    ordering = ORDERING_RATING,
+                    page = FIRST_PAGE,
+                    pageSize = PAGE_SIZE,
                 )
             }
 
             override suspend fun saveCallResult(data: GamesResponseDto) {
                 localDataSource.insertGames(
-                    data.results?.map { GameEntity(it) }.orEmpty(),
+                    data.results?.map {
+                        GameEntity(it)
+                    }.orEmpty(),
                 )
             }
         }.asFlow()
@@ -85,5 +100,11 @@ class GamesDataStore @Inject constructor(
 
     override fun getAllFavoritesGames(): Flow<Resource<List<Game>>> {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        private const val FIRST_PAGE = 1
+        private const val PAGE_SIZE = 10
+        private const val ORDERING_RATING = "-rating"
     }
 }

@@ -23,16 +23,37 @@ object NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         return if (BuildConfig.DEBUG) {
             OkHttpClient.Builder()
-                .addInterceptor(AuthInterceptor())
-                .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
+                .addInterceptor(
+                    interceptor = AuthInterceptor()
+                )
+                .addInterceptor(
+                    interceptor = HttpLoggingInterceptor()
+                        .setLevel(
+                            level = HttpLoggingInterceptor.Level.BODY
+                        )
+                )
+                .connectTimeout(
+                    timeout = TIMEOUT_DURATION,
+                    unit = TimeUnit.SECONDS
+                )
+                .readTimeout(
+                    timeout = TIMEOUT_DURATION,
+                    unit = TimeUnit.SECONDS
+                )
                 .build()
         } else {
             OkHttpClient.Builder()
-                .addInterceptor(AuthInterceptor())
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
+                .addInterceptor(
+                    interceptor = AuthInterceptor()
+                )
+                .connectTimeout(
+                    timeout = TIMEOUT_DURATION,
+                    unit = TimeUnit.SECONDS
+                )
+                .readTimeout(
+                    timeout = TIMEOUT_DURATION,
+                    unit = TimeUnit.SECONDS
+                )
                 .build()
         }
     }
@@ -51,4 +72,6 @@ object NetworkModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    private const val TIMEOUT_DURATION = 120L
 }

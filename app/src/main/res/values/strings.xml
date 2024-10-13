@@ -1,8 +1,20 @@
 <resources>
     <string name="app_name">AndroidStarterKit</string>
+    <string name="largest_game_database">Largest Game Database</string>
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_bookmark">Bookmark</string>
     <string name="action_play_trailer">Play Trailer</string>
     <string name="label_bookmark_description">Save your favorite games and get back whenever you like!</string>
+    <string name="metascore">Metascore</string>
+    <string name="rating">Rating</string>
+    <string name="released">Released</string>
+    <string name="genre">Genre</string>
+    <string name="screenshots">Screenshots</string>
+    <string name="description">Description</string>
+    <string name="tag">Tag</string>
+    <string name="see_more">See more</string>
+    <string name="popular_games">Popular Games</string>
+    <string name="what_games_are_you_looking_for">What games are you looking for?</string>
+    <string name="search">Search…</string>
 </resources>

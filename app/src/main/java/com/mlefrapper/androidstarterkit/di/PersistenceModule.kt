@@ -19,8 +19,10 @@ object PersistenceModule {
         return Room.databaseBuilder(
             context.applicationContext,
             GameDatabase::class.java,
-            "game_database",
+            DATABASE_NAME,
         ).fallbackToDestructiveMigration()
             .build()
     }
+
+    private const val DATABASE_NAME = "game_database"
 }

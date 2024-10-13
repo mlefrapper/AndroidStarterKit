@@ -26,7 +26,9 @@ fun GameItemHorizontal(
 ) {
     Column(
         modifier = modifier
-            .width(140.dp)
+            .width(
+                width = 140.dp
+            )
             .clickable {
                 // TODO LFM
             },
@@ -36,17 +38,27 @@ fun GameItemHorizontal(
             url = game.backgroundImage,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
-                .clip(RoundedCornerShape(5.dp)),
+                .height(
+                    height = 200.dp
+                )
+                .clip(
+                    shape = RoundedCornerShape(
+                        size = 5.dp
+                    )
+                ),
         )
-        Gap(size = 12.dp)
+        Gap(
+            size = 12.dp
+        )
         Text(
             text = game.name,
             style = MaterialTheme.typography.bodyLarge,
             color = Primary80,
             textAlign = TextAlign.Center,
         )
-        Gap(size = 8.dp)
+        Gap(
+            size = 8.dp
+        )
         RatingBar(
             rating = game.rating.toFloat(),
             modifier = Modifier.height(10.dp),

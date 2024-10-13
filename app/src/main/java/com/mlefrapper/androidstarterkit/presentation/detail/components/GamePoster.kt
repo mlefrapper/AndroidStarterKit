@@ -56,7 +56,10 @@ fun GamePoster(
         )
         Row(
             modifier = Modifier
-                .padding(horizontal = 24.dp, vertical = 18.dp)
+                .padding(
+                    horizontal = 24.dp,
+                    vertical = 18.dp
+                )
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -102,7 +105,9 @@ fun GamePoster(
                         },
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_play),
+                        painter = painterResource(
+                            id = R.drawable.ic_play
+                        ),
                         contentDescription = null,
                         colorFilter = ColorFilter.tint(Primary70),
                         modifier = Modifier
@@ -112,7 +117,9 @@ fun GamePoster(
                 }
                 Gap(size = 8.dp)
                 Text(
-                    text = stringResource(id = R.string.action_play_trailer),
+                    text = stringResource(
+                        id = R.string.action_play_trailer
+                    ),
                     style = MaterialTheme.typography.titleSmall,
                     color = Color.White,
                 )
