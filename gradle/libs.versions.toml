@@ -2,9 +2,10 @@
 agp = "8.6.1"
 coilCompose = "3.0.0-rc01"
 converterMoshi = "2.11.0"
+core = "1.11.7"
 hiltAndroid = "2.52"
 hiltNavigationCompose = "1.2.0"
-kotlin = "2.0.20"
+kotlin = "2.0.21"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -14,9 +15,10 @@ activityCompose = "1.9.2"
 composeBom = "2024.09.03"
 loggingInterceptor = "4.12.0"
 moshi = "1.15.1"
+moshiKotlinCodegen = "1.15.1"
 retrofit = "2.11.0"
 roomRuntime = "2.6.1"
-sandwichRetrofit = "2.0.9"
+sandwichRetrofit = "2.0.10"
 timber = "5.0.1"
 appcompat = "1.7.0"
 material = "1.12.0"
@@ -34,6 +36,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
+core = { module = "io.github.raamcosta.compose-destinations:core", version.ref = "core" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
@@ -50,8 +53,10 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+ksp = { module = "io.github.raamcosta.compose-destinations:ksp", version.ref = "core" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshiKotlinCodegen" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 sandwich-retrofit = { module = "com.github.skydoves:sandwich-retrofit", version.ref = "sandwichRetrofit" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }

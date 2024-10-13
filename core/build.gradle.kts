@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
@@ -40,7 +40,7 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.runtime.android)
     implementation(libs.androidx.foundation.layout.android)
-    kapt(libs.hilt.compiler)
+    ksp(libs.hilt.compiler)
 
     // Coil
 

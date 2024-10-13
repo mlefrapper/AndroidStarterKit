@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     id("com.starter.easylauncher") version "6.4.0"
     id("com.google.dagger.hilt.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp")
 }
 
 val properties = gradleLocalProperties(rootDir, providers)
@@ -42,8 +42,16 @@ android {
         }
 
         all {
-            buildConfigField("String", "BASE_URL", "\"https://api.rawg.io/api/\"")
-            buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
+            buildConfigField(
+                type = "String",
+                name = "BASE_URL",
+                value = "\"https://api.rawg.io/api/\""
+            )
+            buildConfigField(
+                type = "String",
+                name = "API_KEY",
+                value = properties.getProperty("API_KEY")
+            )
         }
     }
     compileOptions {
@@ -67,7 +75,9 @@ android {
     }
 }
 
-apply(from = "$projectDir/gradle/easylauncher.gradle")
+apply(
+    from = "$projectDir/gradle/easylauncher.gradle"
+)
 
 dependencies {
 
@@ -83,7 +93,7 @@ dependencies {
     // Moshi
     implementation(libs.moshi)
     implementation(libs.converter.moshi)
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
+    ksp(libs.moshi.kotlin.codegen)
 
     // Coil
     implementation(libs.coil.compose)
@@ -93,10 +103,10 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.room.compiler)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.room.compiler)
+    ksp(libs.androidx.room.room.compiler)
 
-    implementation("io.github.raamcosta.compose-destinations:core:1.11.7")
-    kapt("io.github.raamcosta.compose-destinations:ksp:1.11.7")
+    implementation(libs.core)
+    ksp(libs.ksp)
 
     // Navigation compose
     implementation(libs.androidx.hilt.navigation.compose)
@@ -112,7 +122,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.timber)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

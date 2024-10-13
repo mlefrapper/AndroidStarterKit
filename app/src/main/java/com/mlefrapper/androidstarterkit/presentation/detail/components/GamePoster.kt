@@ -98,11 +98,7 @@ fun GamePoster(
                     modifier = Modifier
                         .size(50.dp)
                         .background(Color.White, CircleShape)
-                        .clickable {
-                            game.trailerUrl?.let {
-                                // onEvent(DetailScreenEvent.PlayTrailer(it))
-                            }
-                        },
+                        .clickable {},
                 ) {
                     Image(
                         painter = painterResource(

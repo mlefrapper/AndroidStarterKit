@@ -26,7 +26,6 @@ import com.mlefrapper.androidstarterkit.presentation.home.components.GameItemHor
 import com.mlefrapper.androidstarterkit.presentation.home.components.SectionTitle
 import com.mlefrapper.androidstarterkit.presentation.home.components.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination(start = true)
 @Composable
