@@ -13,12 +13,12 @@ val properties = gradleLocalProperties(rootDir, providers)
 
 android {
     namespace = "com.mlefrapper.androidstarterkit"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.mlefrapper.androidstarterkit"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

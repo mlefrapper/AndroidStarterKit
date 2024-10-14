@@ -28,7 +28,7 @@ fun BookmarkScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                horizontal = 24.dp
+                horizontal = 24.dp,
             ),
         contentPadding = PaddingValues(vertical = 24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -36,14 +36,14 @@ fun BookmarkScreen(
         item {
             Text(
                 text = stringResource(
-                    id = R.string.title_bookmark
+                    id = R.string.title_bookmark,
                 ),
                 style = MaterialTheme.typography.headlineMedium,
                 color = Primary50,
             )
             Text(
                 text = stringResource(
-                    id = R.string.label_bookmark_description
+                    id = R.string.label_bookmark_description,
                 ),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Neutral50,

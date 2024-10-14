@@ -26,15 +26,15 @@ fun SeeMoreCard(modifier: Modifier = Modifier) {
         modifier = modifier
             .clip(
                 shape = RoundedCornerShape(
-                    size = 100.dp
-                )
+                    size = 100.dp,
+                ),
             )
             .border(
                 width = 1.dp,
                 color = Neutral20,
                 shape = RoundedCornerShape(
-                    size = 100.dp
-                )
+                    size = 100.dp,
+                ),
             )
             .background(Color.White)
             .clickable { },
@@ -45,7 +45,7 @@ fun SeeMoreCard(modifier: Modifier = Modifier) {
             color = Neutral50,
             modifier = Modifier.padding(
                 vertical = 4.dp,
-                horizontal = 8.dp
+                horizontal = 8.dp,
             ),
         )
     }

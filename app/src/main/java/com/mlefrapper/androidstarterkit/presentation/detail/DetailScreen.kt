@@ -69,7 +69,7 @@ fun DetailScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(
-                state = rememberScrollState()
+                state = rememberScrollState(),
             ),
     ) {
         state.game?.let { game ->
@@ -84,14 +84,14 @@ fun DetailScreen(
                         .clip(
                             shape = RoundedCornerShape(
                                 topStart = 20.dp,
-                                topEnd = 20.dp
-                            )
+                                topEnd = 20.dp,
+                            ),
                         )
                         .background(
-                            color = Color.White
+                            color = Color.White,
                         )
                         .padding(
-                            all = 24.dp
+                            all = 24.dp,
                         ),
                 ) {
                     Row(
@@ -106,7 +106,7 @@ fun DetailScreen(
                             modifier = Modifier.weight(1F),
                         )
                         Gap(
-                            size = 8.dp
+                            size = 8.dp,
                         )
                         Icon(
                             imageVector = if (savedState) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
@@ -123,23 +123,23 @@ fun DetailScreen(
                         )
                     }
                     Gap(
-                        size = 8.dp
+                        size = 8.dp,
                     )
                     GeneralGameInfo(
-                        game = game
+                        game = game,
                     )
                     Gap(
-                        size = 24.dp
+                        size = 24.dp,
                     )
                     Text(
                         text = stringResource(
-                            id = R.string.description
+                            id = R.string.description,
                         ),
                         style = MaterialTheme.typography.titleMedium,
                         color = Primary70,
                     )
                     Gap(
-                        size = 8.dp
+                        size = 8.dp,
                     )
                     Text(
                         text = game.description.ifBlank { "-" },
@@ -147,14 +147,14 @@ fun DetailScreen(
                         color = Neutral50,
                     )
                     Gap(
-                        size = 24.dp
+                        size = 24.dp,
                     )
                     Screenshots(
-                        urls = game.shortScreenshots
+                        urls = game.shortScreenshots,
                     )
                     if (game.tags.isNotEmpty()) {
                         Gap(
-                            size = 24.dp
+                            size = 24.dp,
                         )
                         Text(
                             text = stringResource(id = R.string.tag),
@@ -162,10 +162,10 @@ fun DetailScreen(
                             color = Neutral40,
                         )
                         Gap(
-                            size = 8.dp
+                            size = 8.dp,
                         )
                         TagGroup(
-                            tag = game.tags.take(8)
+                            tag = game.tags.take(8),
                         )
                     }
                 }

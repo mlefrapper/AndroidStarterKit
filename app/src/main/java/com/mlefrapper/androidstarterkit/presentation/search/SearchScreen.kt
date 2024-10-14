@@ -41,24 +41,24 @@ fun SearchScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(
-                color = Color.White
+                color = Color.White,
             )
             .padding(
-                horizontal = 24.dp
+                horizontal = 24.dp,
             ),
     ) {
         Gap(
-            size = 48.dp
+            size = 48.dp,
         )
         Text(
             text = stringResource(
-                id = R.string.what_games_are_you_looking_for
+                id = R.string.what_games_are_you_looking_for,
             ),
             style = MaterialTheme.typography.headlineMedium,
             color = Primary50,
         )
         Gap(
-            size = 24.dp
+            size = 24.dp,
         )
         TextField(
             value = state.query,
@@ -68,7 +68,7 @@ fun SearchScreen(
             placeholder = {
                 Text(
                     text = stringResource(
-                        id = R.string.search
+                        id = R.string.search,
                     ),
                     color = Neutral40,
                     style = MaterialTheme.typography.bodyLarge,
@@ -77,11 +77,11 @@ fun SearchScreen(
             leadingIcon = {
                 Image(
                     painter = painterResource(
-                        id = R.drawable.ic_search
+                        id = R.drawable.ic_search,
                     ),
                     contentDescription = null,
                     modifier = Modifier.size(
-                        size = 32.dp
+                        size = 32.dp,
                     ),
                 )
             },
@@ -102,20 +102,20 @@ fun SearchScreen(
                 .fillMaxWidth()
                 .clip(
                     shape = RoundedCornerShape(
-                        size = 12.dp
-                    )
+                        size = 12.dp,
+                    ),
                 ),
         )
         Gap(
-            size = 12.dp
+            size = 12.dp,
         )
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(
-                vertical = 24.dp
+                vertical = 24.dp,
             ),
             verticalArrangement = Arrangement.spacedBy(
-                space = 16.dp
+                space = 16.dp,
             ),
         ) {
         }

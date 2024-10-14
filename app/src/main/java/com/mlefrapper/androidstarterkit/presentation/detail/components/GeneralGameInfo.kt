@@ -44,7 +44,7 @@ fun GeneralGameInfo(
             Column {
                 Text(
                     text = stringResource(
-                        id = R.string.metascore
+                        id = R.string.metascore,
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
@@ -55,8 +55,8 @@ fun GeneralGameInfo(
                         .size(size = 36.dp)
                         .clip(
                             shape = RoundedCornerShape(
-                                size = 8.dp
-                            )
+                                size = 8.dp,
+                            ),
                         )
                         .background(Accent10),
                 ) {
@@ -71,7 +71,7 @@ fun GeneralGameInfo(
             Column {
                 Text(
                     text = stringResource(
-                        id = R.string.rating
+                        id = R.string.rating,
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
@@ -85,29 +85,29 @@ fun GeneralGameInfo(
             }
         }
         Gap(
-            size = 24.dp
+            size = 24.dp,
         )
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(
-                space = 40.dp
+                space = 40.dp,
             ),
         ) {
             Column {
                 Text(
                     text = stringResource(
-                        id = R.string.released
+                        id = R.string.released,
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
                 Gap(
-                    size = 8.dp
+                    size = 8.dp,
                 )
                 Text(
                     text = game.released.convertDateTo(
-                        desireFormat = ConverterDate.FULL_DATE
+                        desireFormat = ConverterDate.FULL_DATE,
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral50,
@@ -116,16 +116,16 @@ fun GeneralGameInfo(
             Column {
                 Text(
                     text = stringResource(
-                        id = R.string.genre
+                        id = R.string.genre,
                     ),
                     style = MaterialTheme.typography.bodyMedium,
                     color = Neutral40,
                 )
                 Gap(
-                    size = 8.dp
+                    size = 8.dp,
                 )
                 TagGroup(
-                    tag = game.genres
+                    tag = game.genres,
                 )
             }
         }

@@ -36,7 +36,7 @@ fun BottomNavigationBar(
                 label = {
                     Text(
                         text = stringResource(
-                            id = bottomNavItem.labelResId
+                            id = bottomNavItem.labelResId,
                         ),
                         color = if (currentRoute == bottomNavItem.route) Primary50 else Neutral50,
                     )
@@ -44,10 +44,10 @@ fun BottomNavigationBar(
                 icon = {
                     Image(
                         painter = painterResource(
-                            id = bottomNavItem.iconResId
+                            id = bottomNavItem.iconResId,
                         ),
                         contentDescription = stringResource(
-                            id = bottomNavItem.labelResId
+                            id = bottomNavItem.labelResId,
                         ),
                         colorFilter = ColorFilter.tint(if (currentRoute == bottomNavItem.route) Primary50 else Neutral50),
                         modifier = Modifier.size(26.dp),

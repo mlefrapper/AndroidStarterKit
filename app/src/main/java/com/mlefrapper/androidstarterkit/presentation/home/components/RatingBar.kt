@@ -53,14 +53,14 @@ private fun RatingStar(
         modifier = Modifier
             .fillMaxHeight()
             .aspectRatio(
-                ratio = 1f
+                ratio = 1f,
             )
             .clip(
-                shape = starShape
+                shape = starShape,
             ),
     ) {
         Canvas(
-            modifier = Modifier.size(maxHeight)
+            modifier = Modifier.size(maxHeight),
         ) {
             drawRect(
                 brush = SolidColor(backgroundColor),

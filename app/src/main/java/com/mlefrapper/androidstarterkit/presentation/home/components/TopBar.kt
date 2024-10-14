@@ -29,7 +29,7 @@ fun TopBar(modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(
                 vertical = 8.dp,
-                horizontal = 24.dp
+                horizontal = 24.dp,
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -38,11 +38,11 @@ fun TopBar(modifier: Modifier = Modifier) {
             contentDescription = null,
             colorFilter = ColorFilter.tint(Primary50),
             modifier = Modifier.size(
-                size = 56.dp
+                size = 56.dp,
             ),
         )
         Gap(
-            size = 12.dp
+            size = 12.dp,
         )
         Column(
             modifier = Modifier.weight(1F),

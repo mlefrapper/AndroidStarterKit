@@ -27,7 +27,7 @@ fun GameItemHorizontal(
     Column(
         modifier = modifier
             .width(
-                width = 140.dp
+                width = 140.dp,
             )
             .clickable {
                 // TODO LFM
@@ -39,16 +39,16 @@ fun GameItemHorizontal(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(
-                    height = 200.dp
+                    height = 200.dp,
                 )
                 .clip(
                     shape = RoundedCornerShape(
-                        size = 5.dp
-                    )
+                        size = 5.dp,
+                    ),
                 ),
         )
         Gap(
-            size = 12.dp
+            size = 12.dp,
         )
         Text(
             text = game.name,
@@ -57,7 +57,7 @@ fun GameItemHorizontal(
             textAlign = TextAlign.Center,
         )
         Gap(
-            size = 8.dp
+            size = 8.dp,
         )
         RatingBar(
             rating = game.rating.toFloat(),

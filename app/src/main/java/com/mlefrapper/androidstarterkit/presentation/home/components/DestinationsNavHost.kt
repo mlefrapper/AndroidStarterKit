@@ -17,7 +17,7 @@ fun DestinationsNavHost(
     NavHost(
         navController = navController,
         startDestination = "Search",
-        modifier = modifier
+        modifier = modifier,
     ) {
         composable(
             route = BottomBarDestination.Home.route,

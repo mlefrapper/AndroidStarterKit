@@ -25,10 +25,10 @@ fun TagGroup(
     FlowRow(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(
-            space = 8.dp
+            space = 8.dp,
         ),
         verticalArrangement = Arrangement.spacedBy(
-            space = 8.dp
+            space = 8.dp,
         ),
     ) {
         repeat(if (isLimited) limitedGenres else tag.size) {

@@ -44,20 +44,20 @@ fun HomeScreen(
             .background(Color.White),
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(vertical = 8.dp)
+            contentPadding = PaddingValues(vertical = 8.dp),
         ) {
             item {
                 TopBar()
             }
             item {
                 Gap(
-                    size = 16.dp
+                    size = 16.dp,
                 )
                 SectionTitle(title = "Hot Games")
             }
             item {
                 Gap(
-                    height = 16.dp
+                    height = 16.dp,
                 )
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
@@ -66,38 +66,39 @@ fun HomeScreen(
                 ) {
                     items(
                         items = state.hotGames,
-                        key = { it.id }) {
-                            GameItemHorizontal(
-                                game = it
-                            )
-                        }
+                        key = { it.id },
+                    ) {
+                        GameItemHorizontal(
+                            game = it,
+                        )
+                    }
                 }
             }
             item {
                 Gap(
-                    height = 24.dp
+                    height = 24.dp,
                 )
                 SectionTitle(
                     title = stringResource(
-                        id = R.string.popular_games
-                    )
+                        id = R.string.popular_games,
+                    ),
                 )
                 Gap(
-                    height = 8.dp
+                    height = 8.dp,
                 )
             }
             items(
                 items = state.games,
-                key = { it.id }
+                key = { it.id },
             ) {
                 GameItem(
                     game = it,
                     modifier = Modifier.padding(
                         horizontal = 24.dp,
-                        vertical = 8.dp
+                        vertical = 8.dp,
                     ),
                     onEvent = { game ->
-                        //navigator.navigate(DetailScreenDestination(game = game))
+                        // navigator.navigate(DetailScreenDestination(game = game))
                     },
                 )
             }

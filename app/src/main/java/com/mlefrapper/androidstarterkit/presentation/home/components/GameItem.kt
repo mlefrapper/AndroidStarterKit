@@ -52,16 +52,16 @@ fun GameItem(
             modifier = Modifier
                 .fillMaxHeight()
                 .width(
-                    width = 85.dp
+                    width = 85.dp,
                 )
                 .clip(
                     shape = RoundedCornerShape(
-                        5.dp
-                    )
+                        5.dp,
+                    ),
                 ),
         )
         Gap(
-            size = 16.dp
+            size = 16.dp,
         )
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -72,10 +72,10 @@ fun GameItem(
                 color = Primary80,
             )
             Gap(
-                size = 8.dp
+                size = 8.dp,
             )
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Filled.Star,
@@ -84,7 +84,7 @@ fun GameItem(
                     modifier = Modifier.size(12.dp),
                 )
                 Gap(
-                    size = 2.dp
+                    size = 2.dp,
                 )
                 Text(
                     text = "${game.rating}/5",
@@ -93,17 +93,17 @@ fun GameItem(
                 )
             }
             Gap(
-                size = 8.dp
+                size = 8.dp,
             )
             TagGroup(
                 tag = game.genres,
-                isLimited = true
+                isLimited = true,
             )
             Gap(
-                size = 8.dp
+                size = 8.dp,
             )
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Default.DateRange,
@@ -112,7 +112,7 @@ fun GameItem(
                     modifier = Modifier.size(12.dp),
                 )
                 Gap(
-                    size = 4.dp
+                    size = 4.dp,
                 )
                 Text(
                     text = game.released.convertDateTo(ConverterDate.FULL_DATE),

@@ -24,35 +24,35 @@ object NetworkModule {
         return if (BuildConfig.DEBUG) {
             OkHttpClient.Builder()
                 .addInterceptor(
-                    interceptor = AuthInterceptor()
+                    interceptor = AuthInterceptor(),
                 )
                 .addInterceptor(
                     interceptor = HttpLoggingInterceptor()
                         .setLevel(
-                            level = HttpLoggingInterceptor.Level.BODY
-                        )
+                            level = HttpLoggingInterceptor.Level.BODY,
+                        ),
                 )
                 .connectTimeout(
                     timeout = TIMEOUT_DURATION,
-                    unit = TimeUnit.SECONDS
+                    unit = TimeUnit.SECONDS,
                 )
                 .readTimeout(
                     timeout = TIMEOUT_DURATION,
-                    unit = TimeUnit.SECONDS
+                    unit = TimeUnit.SECONDS,
                 )
                 .build()
         } else {
             OkHttpClient.Builder()
                 .addInterceptor(
-                    interceptor = AuthInterceptor()
+                    interceptor = AuthInterceptor(),
                 )
                 .connectTimeout(
                     timeout = TIMEOUT_DURATION,
-                    unit = TimeUnit.SECONDS
+                    unit = TimeUnit.SECONDS,
                 )
                 .readTimeout(
                     timeout = TIMEOUT_DURATION,
-                    unit = TimeUnit.SECONDS
+                    unit = TimeUnit.SECONDS,
                 )
                 .build()
         }

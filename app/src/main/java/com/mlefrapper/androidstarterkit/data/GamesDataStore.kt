@@ -65,7 +65,7 @@ class GamesDataStore @Inject constructor(
                 return remoteDataSource.getAllGames(
                     dates = getDateRange(
                         range = Range.MONTH,
-                        isPast = true
+                        isPast = true,
                     ),
                     ordering = ORDERING_RATING,
                     page = FIRST_PAGE,

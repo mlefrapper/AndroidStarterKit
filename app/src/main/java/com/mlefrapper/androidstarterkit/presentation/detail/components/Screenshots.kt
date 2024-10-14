@@ -26,13 +26,13 @@ fun Screenshots(
     Column(modifier = modifier) {
         Text(
             text = stringResource(
-                id = R.string.screenshots
+                id = R.string.screenshots,
             ),
             style = MaterialTheme.typography.titleMedium,
             color = Primary70,
         )
         Gap(
-            size = 8.dp
+            size = 8.dp,
         )
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
@@ -46,7 +46,7 @@ fun Screenshots(
                     modifier = Modifier
                         .fillParentMaxWidth()
                         .height(
-                            height = 200.dp
+                            height = 200.dp,
                         ),
                 )
             }

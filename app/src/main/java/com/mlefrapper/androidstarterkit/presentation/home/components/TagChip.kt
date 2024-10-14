@@ -18,7 +18,7 @@ fun TagChip(name: String, modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(
-            size = 100.dp
+            size = 100.dp,
         ),
         color = Accent10,
     ) {

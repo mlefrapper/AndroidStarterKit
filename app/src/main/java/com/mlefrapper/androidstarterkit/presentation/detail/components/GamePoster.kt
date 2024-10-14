@@ -58,7 +58,7 @@ fun GamePoster(
             modifier = Modifier
                 .padding(
                     horizontal = 24.dp,
-                    vertical = 18.dp
+                    vertical = 18.dp,
                 )
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -102,7 +102,7 @@ fun GamePoster(
                 ) {
                     Image(
                         painter = painterResource(
-                            id = R.drawable.ic_play
+                            id = R.drawable.ic_play,
                         ),
                         contentDescription = null,
                         colorFilter = ColorFilter.tint(Primary70),
@@ -114,7 +114,7 @@ fun GamePoster(
                 Gap(size = 8.dp)
                 Text(
                     text = stringResource(
-                        id = R.string.action_play_trailer
+                        id = R.string.action_play_trailer,
                     ),
                     style = MaterialTheme.typography.titleSmall,
                     color = Color.White,
