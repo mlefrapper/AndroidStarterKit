@@ -121,7 +121,9 @@ private val starPath = { size: Float ->
 @Composable
 fun RatingBarPreview() {
     Column(
-        Modifier.fillMaxSize().background(Color.White),
+        Modifier
+            .fillMaxSize()
+            .background(Color.White),
     ) {
         RatingBar(
             3.8f,

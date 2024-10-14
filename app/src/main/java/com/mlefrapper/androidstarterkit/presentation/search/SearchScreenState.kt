@@ -6,5 +6,5 @@ data class SearchScreenState(
     val games: List<Game> = emptyList(),
     val query: String = "",
     val isLoading: Boolean = false,
-    val error: String? = null,
+    val error: String? = null
 )

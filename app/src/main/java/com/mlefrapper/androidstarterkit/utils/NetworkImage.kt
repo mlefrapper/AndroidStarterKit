@@ -22,7 +22,7 @@ fun NetworkImage(
             .crossfade(true)
             .build(),
         placeholder = painterResource(R.drawable.ic_placeholder),
-        contentDescription = "",
+        contentDescription = EMPTY,
         contentScale = contentScale,
         modifier = modifier,
     )

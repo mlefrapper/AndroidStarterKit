@@ -7,7 +7,10 @@ import com.squareup.moshi.Types
 class StringTypeConverter {
 
     private val moshi = Moshi.Builder().build()
-    private val stringType = Types.newParameterizedType(List::class.java, String::class.java)
+    private val stringType = Types.newParameterizedType(
+        List::class.java,
+        String::class.java
+    )
     private val stringAdapter = moshi.adapter<List<String>>(stringType)
 
     @TypeConverter

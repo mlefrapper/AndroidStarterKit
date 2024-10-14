@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral50
 import com.mlefrapper.androidstarterkit.ui.theme.Primary50
 
@@ -22,14 +23,15 @@ fun BottomNavigationBar(
     modifier: Modifier = Modifier,
     onItemClick: (BottomBarDestination) -> Unit,
 ) {
-    val currentRoute = navController.graph.route
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
     NavigationBar(modifier = modifier) {
         items.forEach { bottomNavItem ->
+            val isSelected = currentRoute == bottomNavItem.route::class.qualifiedName
             NavigationBarItem(
-                selected = currentRoute == bottomNavItem.route,
+                selected = isSelected,
                 onClick = {
-                    if (bottomNavItem.route != currentRoute) {
+                    if (!isSelected) {
                         onItemClick(bottomNavItem)
                     }
                 },
@@ -38,7 +40,7 @@ fun BottomNavigationBar(
                         text = stringResource(
                             id = bottomNavItem.labelResId,
                         ),
-                        color = if (currentRoute == bottomNavItem.route) Primary50 else Neutral50,
+                        color = if (isSelected) Primary50 else Neutral50
                     )
                 },
                 icon = {
@@ -49,10 +51,10 @@ fun BottomNavigationBar(
                         contentDescription = stringResource(
                             id = bottomNavItem.labelResId,
                         ),
-                        colorFilter = ColorFilter.tint(if (currentRoute == bottomNavItem.route) Primary50 else Neutral50),
-                        modifier = Modifier.size(26.dp),
+                        colorFilter = ColorFilter.tint(if (isSelected) Primary50 else Neutral50),
+                        modifier = Modifier.size(26.dp)
                     )
-                },
+                }
             )
         }
     }

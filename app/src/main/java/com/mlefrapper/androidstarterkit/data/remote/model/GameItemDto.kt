@@ -64,7 +64,7 @@ data class GameItemDto(
     @Json(name = "esrb_rating")
     val esrbRating: EsrbRatingDto? = null,
     @Json(name = "short_screenshots")
-    val shortScreenshots: List<ShortScreenshotDto>? = null,
+    val shortScreenshots: List<ShortScreenshotDto>? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class RatingDto(
@@ -75,7 +75,7 @@ data class GameItemDto(
         @Json(name = "count")
         val count: Int? = null,
         @Json(name = "percent")
-        val percent: Double? = null,
+        val percent: Double? = null
     )
 
     @JsonClass(generateAdapter = true)
@@ -91,7 +91,7 @@ data class GameItemDto(
         @Json(name = "dropped")
         val dropped: Int? = null,
         @Json(name = "playing")
-        val playing: Int? = null,
+        val playing: Int? = null
     )
 
     @JsonClass(generateAdapter = true)
@@ -103,7 +103,7 @@ data class GameItemDto(
         @Json(name = "requirements_en")
         val requirementsEn: RequirementsEnDto? = null,
         @Json(name = "requirements_ru")
-        val requirementsRu: RequirementsRuDto? = null,
+        val requirementsRu: RequirementsRuDto? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class PlatformChildDto(
@@ -122,7 +122,7 @@ data class GameItemDto(
             @Json(name = "games_count")
             val gamesCount: Int? = null,
             @Json(name = "image_background")
-            val imageBackground: String? = null,
+            val imageBackground: String? = null
         )
 
         @JsonClass(generateAdapter = true)
@@ -130,7 +130,7 @@ data class GameItemDto(
             @Json(name = "minimum")
             val minimum: String? = null,
             @Json(name = "recommended")
-            val recommended: String? = null,
+            val recommended: String? = null
         )
 
         @JsonClass(generateAdapter = true)
@@ -138,14 +138,14 @@ data class GameItemDto(
             @Json(name = "minimum")
             val minimum: String? = null,
             @Json(name = "recommended")
-            val recommended: String? = null,
+            val recommended: String? = null
         )
     }
 
     @JsonClass(generateAdapter = true)
     data class ParentPlatformDto(
         @Json(name = "platform")
-        val platform: PlatformDto? = null,
+        val platform: PlatformDto? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class PlatformDto(
@@ -154,7 +154,7 @@ data class GameItemDto(
             @Json(name = "name")
             val name: String? = null,
             @Json(name = "slug")
-            val slug: String? = null,
+            val slug: String? = null
         )
     }
 
@@ -169,7 +169,7 @@ data class GameItemDto(
         @Json(name = "games_count")
         val gamesCount: Int? = null,
         @Json(name = "image_background")
-        val imageBackground: String? = null,
+        val imageBackground: String? = null
     )
 
     @JsonClass(generateAdapter = true)
@@ -177,7 +177,7 @@ data class GameItemDto(
         @Json(name = "id")
         val id: Int? = null,
         @Json(name = "store")
-        val store: StoreChildDto? = null,
+        val store: StoreChildDto? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class StoreChildDto(
@@ -192,7 +192,7 @@ data class GameItemDto(
             @Json(name = "games_count")
             val gamesCount: Int? = null,
             @Json(name = "image_background")
-            val imageBackground: String? = null,
+            val imageBackground: String? = null
         )
     }
 
@@ -209,7 +209,7 @@ data class GameItemDto(
         @Json(name = "games_count")
         val gamesCount: Int? = null,
         @Json(name = "image_background")
-        val imageBackground: String? = null,
+        val imageBackground: String? = null
     )
 
     @JsonClass(generateAdapter = true)
@@ -219,7 +219,7 @@ data class GameItemDto(
         @Json(name = "name")
         val name: String? = null,
         @Json(name = "slug")
-        val slug: String? = null,
+        val slug: String? = null
     )
 
     @JsonClass(generateAdapter = true)
@@ -227,6 +227,6 @@ data class GameItemDto(
         @Json(name = "id")
         val id: Int? = null,
         @Json(name = "image")
-        val image: String? = null,
+        val image: String? = null
     )
 }

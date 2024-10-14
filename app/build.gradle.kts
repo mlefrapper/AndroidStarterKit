@@ -7,6 +7,8 @@ plugins {
     id("com.starter.easylauncher") version "6.4.0"
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+    alias(libs.plugins.jetbrains.kotlin.serialization)
+    id("kotlin-parcelize") // needed only for non-primitive classes
 }
 
 val properties = gradleLocalProperties(rootDir, providers)
@@ -105,12 +107,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.room.compiler)
 
-    implementation(libs.core)
-    ksp(libs.ksp)
-
     // Navigation compose
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -19,15 +19,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import com.mlefrapper.androidstarterkit.R
 import com.mlefrapper.androidstarterkit.components.Gap
 import com.mlefrapper.androidstarterkit.presentation.home.components.GameItem
 import com.mlefrapper.androidstarterkit.presentation.home.components.GameItemHorizontal
+import com.mlefrapper.androidstarterkit.presentation.home.components.Route
 import com.mlefrapper.androidstarterkit.presentation.home.components.SectionTitle
 import com.mlefrapper.androidstarterkit.presentation.home.components.TopBar
-import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination(start = true)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
@@ -38,54 +38,50 @@ fun HomeScreen(
         viewModel.onInit()
     })
 
+    val navController = rememberNavController()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(Color.White)
     ) {
         LazyColumn(
-            contentPadding = PaddingValues(vertical = 8.dp),
+            contentPadding = PaddingValues(vertical = 8.dp)
         ) {
             item {
                 TopBar()
             }
             item {
-                Gap(
-                    size = 16.dp,
+                Gap(size = 16.dp)
+                SectionTitle(
+                    title = stringResource(id = R.string.hot_games)
                 )
-                SectionTitle(title = "Hot Games")
             }
             item {
                 Gap(
-                    height = 16.dp,
+                    height = 16.dp
                 )
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(horizontal = 24.dp),
+                    contentPadding = PaddingValues(horizontal = 24.dp)
                 ) {
                     items(
                         items = state.hotGames,
-                        key = { it.id },
+                        key = { it.id }
                     ) {
-                        GameItemHorizontal(
-                            game = it,
-                        )
+                        GameItemHorizontal(game = it)
                     }
                 }
             }
             item {
-                Gap(
-                    height = 24.dp,
-                )
+                Gap(height = 24.dp)
                 SectionTitle(
                     title = stringResource(
                         id = R.string.popular_games,
-                    ),
+                    )
                 )
-                Gap(
-                    height = 8.dp,
-                )
+                Gap(height = 8.dp)
             }
             items(
                 items = state.games,
@@ -95,10 +91,12 @@ fun HomeScreen(
                     game = it,
                     modifier = Modifier.padding(
                         horizontal = 24.dp,
-                        vertical = 8.dp,
+                        vertical = 8.dp
                     ),
                     onEvent = { game ->
-                        // navigator.navigate(DetailScreenDestination(game = game))
+                        navController.navigate(
+                            route = Route.GameDetails(game = game)
+                        )
                     },
                 )
             }

@@ -45,9 +45,7 @@ import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral40
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral50
 import com.mlefrapper.androidstarterkit.ui.theme.Primary70
-import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination
 @Composable
 fun DetailScreen(
     game: Game,
@@ -202,7 +200,10 @@ fun DetailScreenPreview() {
             stores = listOf("Steam", "PlayStation Store"),
             tags = listOf("Singleplayer", "Multiplayer"),
             esrbRating = "Teen",
-            shortScreenshots = listOf("https://via.placeholder.com/100", "https://via.placeholder.com/100"),
+            shortScreenshots = listOf(
+                "https://via.placeholder.com/100",
+                "https://via.placeholder.com/100"
+            ),
             isFavorites = true,
             description = "This is a sample game description.",
             trailerUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",

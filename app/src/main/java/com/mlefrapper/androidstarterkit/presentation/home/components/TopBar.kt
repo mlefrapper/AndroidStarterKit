@@ -29,7 +29,7 @@ fun TopBar(modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(
                 vertical = 8.dp,
-                horizontal = 24.dp,
+                horizontal = 24.dp
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -38,24 +38,22 @@ fun TopBar(modifier: Modifier = Modifier) {
             contentDescription = null,
             colorFilter = ColorFilter.tint(Primary50),
             modifier = Modifier.size(
-                size = 56.dp,
-            ),
+                size = 56.dp
+            )
         )
-        Gap(
-            size = 12.dp,
-        )
+        Gap(size = 12.dp)
         Column(
-            modifier = Modifier.weight(1F),
+            modifier = Modifier.weight(1F)
         ) {
             Text(
                 text = stringResource(id = R.string.app_name),
                 style = MaterialTheme.typography.titleLarge,
-                color = Primary50,
+                color = Primary50
             )
             Text(
                 text = stringResource(id = R.string.largest_game_database),
                 style = MaterialTheme.typography.bodyLarge,
-                color = Neutral50,
+                color = Neutral50
             )
         }
     }

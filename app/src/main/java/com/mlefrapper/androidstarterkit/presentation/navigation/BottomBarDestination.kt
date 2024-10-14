@@ -3,25 +3,26 @@ package com.mlefrapper.androidstarterkit.presentation.navigation
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mlefrapper.androidstarterkit.R
+import com.mlefrapper.androidstarterkit.presentation.home.components.Route
 
 enum class BottomBarDestination(
-    val route: String,
+    val route: Route,
     @StringRes val labelResId: Int,
     @DrawableRes val iconResId: Int,
 ) {
     Home(
-        route = "home",
+        route = Route.Home,
         labelResId = R.string.title_home,
-        iconResId = R.drawable.ic_ghost,
+        iconResId = R.drawable.ic_ghost
     ),
     Search(
-        route = "search",
+        route = Route.Search,
         labelResId = R.string.title_search,
-        iconResId = R.drawable.ic_search,
+        iconResId = R.drawable.ic_search
     ),
     Bookmark(
-        route = "bookmark",
+        route = Route.Bookmark,
         labelResId = R.string.title_bookmark,
-        iconResId = R.drawable.ic_bookmark,
-    ),
+        iconResId = R.drawable.ic_bookmark
+    )
 }

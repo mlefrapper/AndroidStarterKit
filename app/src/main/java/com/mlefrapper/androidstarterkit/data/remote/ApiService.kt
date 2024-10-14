@@ -33,16 +33,16 @@ interface ApiService {
         @Query("exclude_parents") excludeParents: Boolean? = null,
         @Query("exclude_game_series") excludeGameSeries: Boolean? = null,
         @Query("exclude_stores") excludeStores: String? = null,
-        @Query("ordering") ordering: String? = null,
+        @Query("ordering") ordering: String? = null
     ): ApiResponse<GamesResponseDto>
 
     @GET("games/{id}")
     suspend fun getGameDetails(
-        @Path("id") id: Long,
+        @Path("id") id: Long
     ): ApiResponse<GameItemDto>
 
     @GET("games/{id}/movies")
     suspend fun getGameTrailers(
-        @Path("id") id: Long,
+        @Path("id") id: Long
     ): ApiResponse<GameTrailerResponseDto>
 }

@@ -17,7 +17,7 @@ fun String.convertDateTo(
         dateFormat.applyPattern(desireFormat.formatter)
         dateFormat.format(date)
     } else {
-        "-"
+        DASH
     }
 }
 
@@ -33,7 +33,7 @@ fun Date.toString(format: ConverterDate = ConverterDate.SQL_DATE): String {
         ).format(this)
     } catch (e: Exception) {
         e.printStackTrace()
-        ""
+        EMPTY
     }
 }
 

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mlefrapper.androidstarterkit.presentation.home.components.DestinationsNavHost
@@ -25,9 +26,12 @@ class MainActivity : ComponentActivity() {
             AndroidStarterKitTheme {
                 val navController = rememberNavController()
 
-                val shouldShowBottomBar = navController
-                    .currentBackStackEntryAsState().value?.destination?.route in BottomBarDestination.entries
-                    .map { it.route }
+                val currentRoute =
+                    navController.currentBackStackEntryAsState().value?.destination?.route
+                val bottomBarRoutes = BottomBarDestination.entries.map {
+                    it.route::class.qualifiedName
+                }
+                val shouldShowBottomBar = currentRoute in bottomBarRoutes
 
                 Scaffold(
                     bottomBar = {
@@ -37,10 +41,8 @@ class MainActivity : ComponentActivity() {
                                 items = BottomBarDestination.entries,
                                 onItemClick = {
                                     navController.navigate(it.route) {
-                                        navController.graph.startDestinationRoute?.let { route ->
-                                            popUpTo(route) {
-                                                saveState = true
-                                            }
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
                                         }
                                         launchSingleTop = true
                                         restoreState = true

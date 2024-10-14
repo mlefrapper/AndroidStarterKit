@@ -91,6 +91,6 @@ data class GameEntity(
         shortScreenshots = data?.shortScreenshots?.map { it.image.orEmpty() }.orEmpty(),
         description = "",
         trailerUrl = null,
-        isFavorites = false,
+        isFavorites = false
     )
 }

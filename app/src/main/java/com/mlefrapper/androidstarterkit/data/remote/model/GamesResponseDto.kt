@@ -12,5 +12,5 @@ data class GamesResponseDto(
     @Json(name = "previous")
     val previous: Any? = null,
     @Json(name = "results")
-    val results: List<GameItemDto>? = null,
+    val results: List<GameItemDto>? = null
 )

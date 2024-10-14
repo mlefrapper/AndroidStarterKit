@@ -6,5 +6,5 @@ data class HomeScreenState(
     val games: List<Game> = emptyList(),
     val hotGames: List<Game> = emptyList(),
     val isLoading: Boolean = false,
-    val error: String? = null,
+    val error: String? = null
 )

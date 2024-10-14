@@ -12,7 +12,7 @@ data class GameTrailerResponseDto(
     @Json(name = "previous")
     val previous: Any? = null,
     @Json(name = "results")
-    val results: List<ResultDto?>? = null,
+    val results: List<ResultDto?>? = null
 ) {
     @JsonClass(generateAdapter = true)
     data class ResultDto(
@@ -23,14 +23,14 @@ data class GameTrailerResponseDto(
         @Json(name = "preview")
         val preview: String? = null,
         @Json(name = "data")
-        val data: DataDto? = null,
+        val data: DataDto? = null
     ) {
         @JsonClass(generateAdapter = true)
         data class DataDto(
             @Json(name = "480")
             val x480: String? = null,
             @Json(name = "max")
-            val max: String? = null,
+            val max: String? = null
         )
     }
 }

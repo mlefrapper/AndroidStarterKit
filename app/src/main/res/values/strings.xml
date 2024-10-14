@@ -15,6 +15,7 @@
     <string name="tag">Tag</string>
     <string name="see_more">See more</string>
     <string name="popular_games">Popular Games</string>
+    <string name="hot_games">Hot Games</string>
     <string name="what_games_are_you_looking_for">What games are you looking for?</string>
     <string name="search">Search…</string>
 </resources>

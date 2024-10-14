@@ -6,12 +6,12 @@ import com.mlefrapper.androidstarterkit.domain.usecase.GetAllGamesUseCase
 import com.mlefrapper.androidstarterkit.domain.usecase.GetHotGamesUseCase
 import com.mlefrapper.core.vo.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
-import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
@@ -37,23 +37,25 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = result.message,
+                            error = result.message
                         )
                     }
                 }
+
                 is Resource.Loading -> {
                     _uiState.update {
                         it.copy(
-                            isLoading = true,
+                            isLoading = true
                         )
                     }
                 }
+
                 is Resource.Success -> {
                     _uiState.update {
                         it.copy(
                             games = result.data,
                             isLoading = false,
-                            error = null,
+                            error = null
                         )
                     }
                 }
@@ -68,23 +70,25 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            error = result.message,
+                            error = result.message
                         )
                     }
                 }
+
                 is Resource.Loading -> {
                     _uiState.update {
                         it.copy(
-                            isLoading = true,
+                            isLoading = true
                         )
                     }
                 }
+
                 is Resource.Success -> {
                     _uiState.update {
                         it.copy(
                             hotGames = result.data,
                             isLoading = false,
-                            error = null,
+                            error = null
                         )
                     }
                 }

@@ -3,7 +3,9 @@ package com.mlefrapper.androidstarterkit.domain.model
 import com.mlefrapper.androidstarterkit.data.local.entity.GameEntity
 import com.mlefrapper.androidstarterkit.utils.ConverterDate
 import com.mlefrapper.androidstarterkit.utils.toString
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Game(
     val id: Long,
     val slug: String,

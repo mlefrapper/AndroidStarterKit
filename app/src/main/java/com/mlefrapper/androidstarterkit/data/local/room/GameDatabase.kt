@@ -9,7 +9,7 @@ import com.mlefrapper.androidstarterkit.data.local.entity.GameEntity
 @Database(
     entities = [GameEntity::class],
     version = 1,
-    exportSchema = false,
+    exportSchema = false
 )
 @TypeConverters(StringTypeConverter::class, DateTypeConverter::class)
 abstract class GameDatabase : RoomDatabase() {

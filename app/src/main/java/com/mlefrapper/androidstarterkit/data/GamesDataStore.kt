@@ -10,9 +10,9 @@ import com.mlefrapper.androidstarterkit.utils.Range
 import com.mlefrapper.androidstarterkit.utils.getDateRange
 import com.mlefrapper.core.vo.Resource
 import com.skydoves.sandwich.ApiResponse
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 class GamesDataStore @Inject constructor(
     private val remoteDataSource: RemoteDataSource,

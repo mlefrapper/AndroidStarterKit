@@ -3,8 +3,8 @@ package com.mlefrapper.androidstarterkit.data.local
 import com.mlefrapper.androidstarterkit.data.local.entity.GameEntity
 import com.mlefrapper.androidstarterkit.data.local.room.GameDatabase
 import com.mlefrapper.androidstarterkit.utils.getLastMonthDate
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSourceImpl @Inject constructor(
     private val appDatabase: GameDatabase,
