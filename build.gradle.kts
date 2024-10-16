@@ -2,6 +2,7 @@
 buildscript {
     dependencies {
         classpath(libs.spotless.plugin.gradle)
+        classpath(libs.hilt.android.gradle.plugin)
     }
 }
 plugins {
@@ -18,6 +19,6 @@ plugins {
 
 subprojects {
     afterEvaluate {
-        project.apply("../spotless.gradle")
+        project.apply(from = "${project.rootDir}/spotless.gradle")
     }
 }

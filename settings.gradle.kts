@@ -22,3 +22,9 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidStarterKit"
 include(":app")
 include(":core")
+include(":features:search")
+include(":data")
+include(":ui")
+include(":features:bookmark")
+include(":features:detail")
+include(":features:home")

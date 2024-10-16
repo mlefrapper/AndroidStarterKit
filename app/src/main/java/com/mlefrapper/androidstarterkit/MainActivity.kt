@@ -21,7 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowCompat.setDecorFitsSystemWindows(
+            window,
+            false,
+        )
         setContent {
             AndroidStarterKitTheme {
                 val navController = rememberNavController()
@@ -41,7 +44,12 @@ class MainActivity : ComponentActivity() {
                                 items = BottomBarDestination.entries,
                                 onItemClick = {
                                     navController.navigate(it.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) {
+                                        popUpTo(
+                                            navController
+                                                .graph
+                                                .findStartDestination()
+                                                .id,
+                                        ) {
                                             saveState = true
                                         }
                                         launchSingleTop = true
@@ -52,7 +60,9 @@ class MainActivity : ComponentActivity() {
                         }
                     },
                 ) {
-                    Box(modifier = Modifier.padding(it)) {
+                    Box(
+                        modifier = Modifier.padding(it),
+                    ) {
                         DestinationsNavHost(
                             navController = navController,
                         )

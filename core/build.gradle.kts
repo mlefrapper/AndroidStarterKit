@@ -10,7 +10,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,22 +37,12 @@ android {
 dependencies {
 
     // Hilt
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.runtime.android)
-    implementation(libs.androidx.foundation.layout.android)
-    ksp(libs.hilt.compiler)
+    api(libs.hilt.android)
+    annotationProcessor(libs.hilt.compiler)
 
-    // Coil
-
-    // Room
+    api(libs.androidx.runtime.android)
+    api(libs.androidx.foundation.layout.android)
 
     // Timber
-    implementation(libs.timber)
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.timber)
 }

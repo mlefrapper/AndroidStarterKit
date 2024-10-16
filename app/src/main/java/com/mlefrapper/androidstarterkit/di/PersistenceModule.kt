@@ -15,7 +15,9 @@ import javax.inject.Singleton
 object PersistenceModule {
     @Provides
     @Singleton
-    fun provideGameDatabase(@ApplicationContext context: Context): GameDatabase {
+    fun provideGameDatabase(
+        @ApplicationContext context: Context,
+    ): GameDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             GameDatabase::class.java,
