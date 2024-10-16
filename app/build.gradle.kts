@@ -70,11 +70,13 @@ apply(
 )
 
 dependencies {
+    // Features
     api(project(":features:home"))
     api(project(":features:search"))
     api(project(":features:bookmark"))
     api(project(":features:detail"))
 
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 }

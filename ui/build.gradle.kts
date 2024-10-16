@@ -56,4 +56,7 @@ dependencies {
 
     // Material 3
     api(libs.androidx.material3.android)
+
+    // Splashscreen
+    api(libs.androidx.core.splashscreen)
 }
