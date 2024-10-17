@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AndroidStarterKit"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

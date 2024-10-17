@@ -1,4 +1,4 @@
-package com.mlefrapper.androidstarterkit
+package com.mlefrapper.androidstarterkit.presentation.main
 
 import com.mlefrapper.androidstarterkit.ui.components.snackbar.SnackBarMessage
 

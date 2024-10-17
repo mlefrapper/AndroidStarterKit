@@ -1,4 +1,4 @@
-package com.mlefrapper.androidstarterkit
+package com.mlefrapper.androidstarterkit.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,9 +19,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.mlefrapper.androidstarterkit.presentation.home.components.DestinationsNavHost
 import com.mlefrapper.androidstarterkit.presentation.navigation.BottomBarDestination
 import com.mlefrapper.androidstarterkit.presentation.navigation.BottomNavigationBar
+import com.mlefrapper.androidstarterkit.presentation.navigation.DestinationsNavHost
 import com.mlefrapper.androidstarterkit.ui.components.snackbar.ProvideSnackBarController
 import com.mlefrapper.androidstarterkit.ui.components.snackbar.SnackBarMessageHandler
 import com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme

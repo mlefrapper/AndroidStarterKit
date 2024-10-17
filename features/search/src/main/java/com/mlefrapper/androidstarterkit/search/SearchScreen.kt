@@ -94,7 +94,9 @@ fun SearchScreen(
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(shape = RoundedCornerShape(size = 12.dp)),
+                .clip(
+                    shape = RoundedCornerShape(size = 12.dp),
+                ),
         )
         Gap(size = 12.dp)
         LazyColumn(
@@ -108,7 +110,7 @@ fun SearchScreen(
             ) {
                 GameItem(
                     game = it,
-                    onEvent = {},
+                    onItemClick = {},
                 )
             }
         }

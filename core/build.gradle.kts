@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
+    id("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
@@ -40,9 +42,8 @@ dependencies {
     api(libs.hilt.android)
     annotationProcessor(libs.hilt.compiler)
 
-    api(libs.androidx.runtime.android)
-    api(libs.androidx.foundation.layout.android)
-
     // Timber
     api(libs.timber)
+
+    api(libs.kotlinx.serialization.json)
 }

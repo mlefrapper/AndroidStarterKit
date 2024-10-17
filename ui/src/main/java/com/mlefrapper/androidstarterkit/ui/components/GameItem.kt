@@ -34,14 +34,14 @@ import com.mlefrapper.androidstarterkit.ui.utils.NetworkImage
 fun GameItem(
     game: Game,
     modifier: Modifier = Modifier,
-    onEvent: (Game) -> Unit,
+    onItemClick: (gameId: Long) -> Unit = {},
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .height(120.dp)
             .clickable {
-                onEvent(game)
+                onItemClick.invoke(game.id)
             },
     ) {
         NetworkImage(
@@ -148,7 +148,7 @@ fun GameItemPreview() {
     AndroidStarterKitTheme {
         GameItem(
             game = sampleGame,
-            onEvent = {},
+            onItemClick = {},
         )
     }
 }

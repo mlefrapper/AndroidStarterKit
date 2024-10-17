@@ -1,9 +1,9 @@
+import com.android.build.api.dsl.ProductFlavor
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.jetbrains.kotlin.serialization)
-    id("kotlin-parcelize")
     id("com.starter.easylauncher") version "6.4.0"
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
@@ -26,6 +26,38 @@ android {
         }
     }
 
+    flavorDimensions += "environment"
+
+    productFlavors {
+        val baseUrlName = "BASE_URL"
+
+        fun ProductFlavor.buildConfigStringField(name: String, value: String) {
+            buildConfigField(
+                type = "String",
+                name = name,
+                value = value
+            )
+        }
+
+        register("dev") {
+            dimension = "environment"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+
+            buildConfigStringField(
+                name = baseUrlName,
+                value = "\"https://api.rawg.io/api/\""
+            )
+        }
+        register("prod") {
+            dimension = "environment"
+            buildConfigStringField(
+                name = baseUrlName,
+                value = "\"https://api.rawg.io/api/\""
+            )
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -36,15 +68,7 @@ android {
         }
 
         debug {
-
-        }
-
-        all {
-            buildConfigField(
-                type = "String",
-                name = "BASE_URL",
-                value = "\"https://api.rawg.io/api/\""
-            )
+            applicationIdSuffix = ".debug"
         }
     }
     compileOptions {

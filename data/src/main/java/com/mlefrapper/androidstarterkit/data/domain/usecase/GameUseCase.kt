@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface GameUseCase {
     fun getAllGames(): Flow<Resource<List<Game>>>
     fun getHotGames(): Flow<Resource<List<Game>>>
+    fun getGameDetails(gameId: Long): Flow<Resource<Game>>
 }

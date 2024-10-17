@@ -4,6 +4,7 @@ import com.mlefrapper.androidstarterkit.data.local.entity.GameEntity
 import com.mlefrapper.androidstarterkit.data.local.room.LocalDataSource
 import com.mlefrapper.androidstarterkit.data.model.Game
 import com.mlefrapper.androidstarterkit.data.remote.RemoteDataSource
+import com.mlefrapper.androidstarterkit.data.remote.model.GameItemDto
 import com.mlefrapper.androidstarterkit.data.remote.model.GamesResponseDto
 import com.mlefrapper.androidstarterkit.data.repository.GamesRepository
 import com.mlefrapper.androidstarterkit.data.utils.Range
@@ -82,8 +83,34 @@ class GamesDataStore @Inject constructor(
             }
         }.asFlow()
 
-    override fun getGameDetails(id: Long): Flow<Resource<Game>> {
-        TODO("Not yet implemented")
+    override fun getGameDetails(gameId: Long): Flow<Resource<Game>> {
+        return object : NetworkBoundResource<Game, GameItemDto>() {
+            override fun loadFromDB(): Flow<Game> {
+                return localDataSource
+                    .getGameDetail(gameId)
+                    .map { gameEntity ->
+                        Game(gameEntity)
+                    }
+            }
+
+            override fun shouldFetch(data: Game?): Boolean {
+                return data?.description.isNullOrEmpty()
+            }
+
+            override suspend fun createCall(): ApiResponse<GameItemDto> {
+                return remoteDataSource
+                    .getGameDetails(gameId)
+            }
+
+            override suspend fun saveCallResult(data: GameItemDto) {
+                data.id?.let { id ->
+                    localDataSource.updateGameDescription(
+                        id = id,
+                        description = data.description.orEmpty(),
+                    )
+                }
+            }
+        }.asFlow()
     }
 
     override fun getGameTrailer(id: Long): Flow<Resource<Game>> {

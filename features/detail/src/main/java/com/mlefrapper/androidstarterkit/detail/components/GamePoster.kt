@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mlefrapper.androidstarterkit.data.model.Game
 import com.mlefrapper.androidstarterkit.ui.R
 import com.mlefrapper.androidstarterkit.ui.components.Gap
 import com.mlefrapper.androidstarterkit.ui.theme.Primary70
@@ -35,8 +36,10 @@ import com.mlefrapper.androidstarterkit.ui.utils.NetworkImage
 
 @Composable
 fun GamePoster(
-    game: com.mlefrapper.androidstarterkit.data.model.Game,
+    game: Game,
     modifier: Modifier = Modifier,
+    onShareClick: (Long) -> Unit = {},
+    onBackClick: () -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -63,14 +66,14 @@ fun GamePoster(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Icon(
-                imageVector = Icons.Default.ArrowBack,
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = null,
                 tint = Color.White,
                 modifier = Modifier
                     .size(24.dp)
                     .clickable(
                         onClick = {
-                            // onEvent(DetailScreenEvent.NavigateBack)
+                            onBackClick.invoke()
                         },
                     ),
             )
@@ -82,7 +85,7 @@ fun GamePoster(
                     .size(24.dp)
                     .clickable(
                         onClick = {
-                            // onEvent(DetailScreenEvent.ShareGame(game))
+                            onShareClick.invoke(game.id)
                         },
                     ),
             )
@@ -125,7 +128,7 @@ fun GamePoster(
 @Preview(showBackground = true)
 @Composable
 fun GamePosterPreview() {
-    val sampleGame = com.mlefrapper.androidstarterkit.data.model.Game(
+    val sampleGame = Game(
         id = 123,
         slug = "sample-game",
         name = "Sample Game",
@@ -161,6 +164,8 @@ fun GamePosterPreview() {
     com.mlefrapper.androidstarterkit.ui.theme.AndroidStarterKitTheme {
         GamePoster(
             game = sampleGame,
+            onShareClick = {},
+            onBackClick = {},
         )
     }
 }

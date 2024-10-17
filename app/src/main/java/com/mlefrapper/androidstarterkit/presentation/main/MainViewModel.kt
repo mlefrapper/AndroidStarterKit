@@ -1,4 +1,4 @@
-package com.mlefrapper.androidstarterkit
+package com.mlefrapper.androidstarterkit.presentation.main
 
 import androidx.annotation.StringRes
 import androidx.compose.material3.SnackbarDuration

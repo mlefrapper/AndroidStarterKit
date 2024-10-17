@@ -7,10 +7,10 @@ import kotlinx.coroutines.flow.Flow
 interface GamesRepository {
     fun getAllGames(): Flow<Resource<List<Game>>>
     fun getHotGames(): Flow<Resource<List<Game>>>
-    fun getGameDetails(id: Long): Flow<Resource<Game>>
-    fun getGameTrailer(id: Long): Flow<Resource<Game>>
+    fun getGameDetails(gameId: Long): Flow<Resource<Game>>
+    fun getGameTrailer(gameId: Long): Flow<Resource<Game>>
     fun searchGame(query: String): Flow<Resource<List<Game>>>
 
-    suspend fun setIsFavorites(isFavorites: Boolean, id: Long)
+    suspend fun setIsFavorites(isFavorites: Boolean, gameId: Long)
     fun getAllFavoritesGames(): Flow<Resource<List<Game>>>
 }

@@ -24,6 +24,7 @@ import com.mlefrapper.androidstarterkit.ui.utils.NetworkImage
 fun GameItemHorizontal(
     game: Game,
     modifier: Modifier = Modifier,
+    onItemClick: (gameId: Long) -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -31,7 +32,7 @@ fun GameItemHorizontal(
                 width = 140.dp,
             )
             .clickable {
-                // TODO LFM
+                onItemClick.invoke(game.id)
             },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {

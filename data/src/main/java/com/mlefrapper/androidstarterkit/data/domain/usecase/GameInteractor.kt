@@ -17,4 +17,10 @@ class GameInteractor @Inject constructor(
     override fun getHotGames(): Flow<Resource<List<Game>>> {
         return gamesRepository.getHotGames()
     }
+
+    override fun getGameDetails(gameId: Long): Flow<Resource<Game>> {
+        return gamesRepository.getGameDetails(
+            gameId = gameId,
+        )
+    }
 }

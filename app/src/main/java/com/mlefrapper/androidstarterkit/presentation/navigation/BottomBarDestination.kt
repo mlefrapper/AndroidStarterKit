@@ -3,6 +3,7 @@ package com.mlefrapper.androidstarterkit.presentation.navigation
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mlefrapper.androidstarterkit.ui.R
+import com.mlefrapper.core.navigation.Route
 
 enum class BottomBarDestination(
     val route: Route,

@@ -19,17 +19,19 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
 import com.mlefrapper.androidstarterkit.home.components.GameItemHorizontal
 import com.mlefrapper.androidstarterkit.home.components.SectionTitle
 import com.mlefrapper.androidstarterkit.home.components.TopBar
 import com.mlefrapper.androidstarterkit.ui.R
 import com.mlefrapper.androidstarterkit.ui.components.GameItem
 import com.mlefrapper.androidstarterkit.ui.components.Gap
+import com.mlefrapper.core.navigation.Route
 
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel<HomeViewModel>(),
+    navController: NavHostController,
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -39,8 +41,6 @@ fun HomeScreen(
             viewModel.onInit()
         },
     )
-
-    val navController = rememberNavController()
 
     Column(
         modifier = Modifier
@@ -70,7 +70,16 @@ fun HomeScreen(
                         items = state.hotGames,
                         key = { it.id },
                     ) {
-                        GameItemHorizontal(game = it)
+                        GameItemHorizontal(
+                            game = it,
+                            onItemClick = { gameId ->
+                                navController.navigate(
+                                    route = Route.GameDetails(
+                                        gameId = gameId,
+                                    ),
+                                )
+                            },
+                        )
                     }
                 }
             }
@@ -93,12 +102,12 @@ fun HomeScreen(
                         horizontal = 24.dp,
                         vertical = 8.dp,
                     ),
-                    onEvent = { game ->
-                        /*
+                    onItemClick = { gameId ->
                         navController.navigate(
-                            route = Route.GameDetails(game = game),
+                            route = Route.GameDetails(
+                                gameId = gameId,
+                            ),
                         )
-                         */
                     },
                 )
             }
