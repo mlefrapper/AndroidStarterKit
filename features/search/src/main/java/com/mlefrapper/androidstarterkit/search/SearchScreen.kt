@@ -26,16 +26,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.mlefrapper.androidstarterkit.ui.R
 import com.mlefrapper.androidstarterkit.ui.components.GameItem
 import com.mlefrapper.androidstarterkit.ui.components.Gap
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral40
 import com.mlefrapper.androidstarterkit.ui.theme.Neutral5
 import com.mlefrapper.androidstarterkit.ui.theme.Primary50
+import com.mlefrapper.core.navigation.Route
 
 @Composable
 fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel<SearchViewModel>(),
+    navController: NavHostController,
 ) {
     val state by viewModel.uiState.collectAsState()
 
@@ -58,7 +61,9 @@ fun SearchScreen(
         Gap(size = 24.dp)
         TextField(
             value = state.query,
-            onValueChange = {},
+            onValueChange = {
+                viewModel.searchGames(it)
+            },
             textStyle = MaterialTheme.typography.bodyLarge,
             placeholder = {
                 Text(
@@ -108,9 +113,16 @@ fun SearchScreen(
                 items = state.games,
                 key = { it.id },
             ) {
+                val game = it
                 GameItem(
-                    game = it,
-                    onItemClick = {},
+                    game = game,
+                    onItemClick = {
+                        navController.navigate(
+                            route = Route.GameDetails(
+                                gameId = game.id,
+                            ),
+                        )
+                    },
                 )
             }
         }

@@ -8,4 +8,5 @@ interface GameUseCase {
     fun getAllGames(): Flow<Resource<List<Game>>>
     fun getHotGames(): Flow<Resource<List<Game>>>
     fun getGameDetails(gameId: Long): Flow<Resource<Game>>
+    fun searchGames(query: String): Flow<Resource<List<Game>>>
 }

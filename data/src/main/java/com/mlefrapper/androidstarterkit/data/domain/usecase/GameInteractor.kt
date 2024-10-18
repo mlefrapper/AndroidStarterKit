@@ -23,4 +23,8 @@ class GameInteractor @Inject constructor(
             gameId = gameId,
         )
     }
+
+    override fun searchGames(query: String): Flow<Resource<List<Game>>> {
+        return gamesRepository.searchGame(query)
+    }
 }
