@@ -41,8 +41,8 @@ class AndroidStarterKitApplication : Application() {
             flipperClient.addPlugin(
                 InspectorFlipperPlugin(
                     this@AndroidStarterKitApplication,
-                    DescriptorMapping.withDefaults()
-                )
+                    DescriptorMapping.withDefaults(),
+                ),
             )
             flipperClient.addPlugin(DatabasesFlipperPlugin(this@AndroidStarterKitApplication))
             flipperClient.addPlugin(networkFlipperPlugin)

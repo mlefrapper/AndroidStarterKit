@@ -25,15 +25,15 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): OkHttpClient {
         val interceptor = AuthInterceptor()
         return if (BuildConfig.DEBUG) {
             OkHttpClient.Builder()
                 .addNetworkInterceptor(
                     interceptor = FlipperOkhttpInterceptor(
-                        (context as AndroidStarterKitApplication).networkFlipperPlugin
-                    )
+                        (context as AndroidStarterKitApplication).networkFlipperPlugin,
+                    ),
                 )
                 .addInterceptor(interceptor = interceptor)
                 .addInterceptor(
