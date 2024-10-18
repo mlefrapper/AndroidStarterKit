@@ -11,6 +11,6 @@ interface GamesRepository {
     fun getGameTrailer(gameId: Long): Flow<Resource<Game>>
     fun searchGame(query: String): Flow<Resource<List<Game>>>
 
-    suspend fun setIsFavorites(isFavorites: Boolean, gameId: Long)
-    fun getAllFavoritesGames(): Flow<Resource<List<Game>>>
+    suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean)
+    fun getAllBookmarkedGames(): Flow<List<Game>>
 }

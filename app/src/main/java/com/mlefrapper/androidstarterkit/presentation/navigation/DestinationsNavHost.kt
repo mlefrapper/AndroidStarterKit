@@ -23,7 +23,7 @@ fun DestinationsNavHost(
     ) {
         composable<Route.Home> { HomeScreen(navController = navController) }
         composable<Route.Search> { SearchScreen(navController = navController) }
-        composable<Route.Bookmark> { BookmarkScreen() }
+        composable<Route.Bookmark> { BookmarkScreen(navController = navController) }
         composable<Route.GameDetails> {
             val gameId = it.arguments?.getLong("gameId")
             gameId?.let { id ->

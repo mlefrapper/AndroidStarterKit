@@ -32,9 +32,9 @@ interface GameDao {
     @Query("SELECT * FROM game WHERE id = :id")
     fun getGameDetails(id: Long): Flow<GameEntity?>
 
-    @Query("UPDATE game SET is_favorites = :isFavorites WHERE id = :id")
-    suspend fun setIsFavorites(isFavorites: Boolean, id: Long)
+    @Query("UPDATE game SET is_favorites = :isBookmarked WHERE id = :id")
+    suspend fun setIsBookmarked(id: Long, isBookmarked: Boolean)
 
     @Query("SELECT * FROM game WHERE is_favorites = 1")
-    fun getAllFavoriteGames(): Flow<List<GameEntity>>
+    fun getAllBookmarkedGames(): Flow<List<GameEntity>>
 }

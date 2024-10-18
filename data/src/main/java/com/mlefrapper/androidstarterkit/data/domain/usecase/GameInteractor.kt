@@ -27,4 +27,15 @@ class GameInteractor @Inject constructor(
     override fun searchGames(query: String): Flow<Resource<List<Game>>> {
         return gamesRepository.searchGame(query)
     }
+
+    override fun getAllBookmarkedGames(): Flow<List<Game>> {
+        return gamesRepository.getAllBookmarkedGames()
+    }
+
+    override suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean) {
+        gamesRepository.setIsBookmarked(
+            gameId = gameId,
+            isBookmarked = isBookmarked,
+        )
+    }
 }

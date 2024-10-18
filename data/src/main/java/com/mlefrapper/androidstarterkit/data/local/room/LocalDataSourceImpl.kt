@@ -25,12 +25,12 @@ class LocalDataSourceImpl @Inject constructor(
         return appDatabase.gameDao().getGameDetails(id)
     }
 
-    override suspend fun setIsFavorites(isFavorites: Boolean, id: Long) {
-        appDatabase.gameDao().setIsFavorites(isFavorites, id)
+    override suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean) {
+        appDatabase.gameDao().setIsBookmarked(gameId, isBookmarked)
     }
 
     override fun getAllFavoriteGames(): Flow<List<GameEntity>> {
-        return appDatabase.gameDao().getAllFavoriteGames()
+        return appDatabase.gameDao().getAllBookmarkedGames()
     }
 
     override suspend fun insertGames(games: List<GameEntity>) {

@@ -9,4 +9,6 @@ interface GameUseCase {
     fun getHotGames(): Flow<Resource<List<Game>>>
     fun getGameDetails(gameId: Long): Flow<Resource<Game>>
     fun searchGames(query: String): Flow<Resource<List<Game>>>
+    fun getAllBookmarkedGames(): Flow<List<Game>>
+    suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean)
 }

@@ -151,12 +151,19 @@ class GamesDataStore @Inject constructor(
         }.asFlow()
     }
 
-    override suspend fun setIsFavorites(isFavorites: Boolean, id: Long) {
-        TODO("Not yet implemented")
+    override suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean) {
+        localDataSource.setIsBookmarked(
+            gameId = gameId,
+            isBookmarked = isBookmarked,
+        )
     }
 
-    override fun getAllFavoritesGames(): Flow<Resource<List<Game>>> {
-        TODO("Not yet implemented")
+    override fun getAllBookmarkedGames(): Flow<List<Game>> {
+        return localDataSource.getAllFavoriteGames().map { games ->
+            games.map {
+                Game(it)
+            }
+        }
     }
 
     companion object {

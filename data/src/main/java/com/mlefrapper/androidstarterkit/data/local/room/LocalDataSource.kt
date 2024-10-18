@@ -8,7 +8,7 @@ interface LocalDataSource {
     fun getHotGames(): Flow<List<GameEntity>>
     fun searchGames(query: String): Flow<List<GameEntity>>
     fun getGameDetail(id: Long): Flow<GameEntity?>
-    suspend fun setIsFavorites(isFavorites: Boolean, id: Long)
+    suspend fun setIsBookmarked(gameId: Long, isBookmarked: Boolean)
     fun getAllFavoriteGames(): Flow<List<GameEntity>>
     suspend fun insertGames(games: List<GameEntity>)
     suspend fun updateGameDescription(id: Long, description: String)

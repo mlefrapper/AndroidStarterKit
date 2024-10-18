@@ -18,4 +18,5 @@
     <string name="hot_games">Hot Games</string>
     <string name="what_games_are_you_looking_for">What games are you looking for?</string>
     <string name="search">Search…</string>
+    <string name="no_bookmarks">You haven\'t bookmarked any games yet.</string>
 </resources>
