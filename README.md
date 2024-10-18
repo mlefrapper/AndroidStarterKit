@@ -2,7 +2,7 @@
 
 ## Tech stack & open-source libraries
 
-- Minimum SDK level 24
+- Minimum SDK level 26
 - [Kotlin](https://kotlinlang.org/) based
 - [Compose](https://developer.android.com/jetpack/compose): Modern toolkit for building native UI
 - [Hilt](https://dagger.dev/hilt/): for dependency injection.
