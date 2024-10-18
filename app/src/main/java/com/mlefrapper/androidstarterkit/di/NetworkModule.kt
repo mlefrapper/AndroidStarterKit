@@ -1,5 +1,8 @@
 package com.mlefrapper.androidstarterkit.di
 
+import android.content.Context
+import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
+import com.mlefrapper.androidstarterkit.AndroidStarterKitApplication
 import com.mlefrapper.androidstarterkit.BuildConfig
 import com.mlefrapper.androidstarterkit.data.remote.ApiService
 import com.mlefrapper.androidstarterkit.data.remote.AuthInterceptor
@@ -7,6 +10,7 @@ import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,10 +24,17 @@ import javax.inject.Singleton
 object NetworkModule {
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+        @ApplicationContext context: Context
+    ): OkHttpClient {
         val interceptor = AuthInterceptor()
         return if (BuildConfig.DEBUG) {
             OkHttpClient.Builder()
+                .addNetworkInterceptor(
+                    interceptor = FlipperOkhttpInterceptor(
+                        (context as AndroidStarterKitApplication).networkFlipperPlugin
+                    )
+                )
                 .addInterceptor(interceptor = interceptor)
                 .addInterceptor(
                     interceptor = HttpLoggingInterceptor()

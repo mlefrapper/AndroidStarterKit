@@ -1,24 +1,22 @@
 easylauncher {
+    defaultFlavorNaming true
 
     String colorGreen = "#00EB5E"
     String colorBlue = "#221C46"
 
     buildTypes {
         debug {
-            filters = customRibbon(
-                    ribbonColor: "#EC1D24",
-                    label: "DEBUG"
-            )
+            filters = customRibbon(ribbonColor: "#EC1D24", label: "DEBUG")
         }
     }
 
     productFlavors {
-        register("dev") {
+        dev {
             filters = chromeLike(
                     label: "DEV",
                     ribbonColor: colorGreen,
                     labelPadding: 10,
-                    labelColor: colorBlue
+                    labelColor: colorBlue,
             )
         }
     }

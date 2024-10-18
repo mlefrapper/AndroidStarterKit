@@ -103,6 +103,13 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    // Flipper
+    debugImplementation(libs.flipper)
+    debugImplementation(libs.soloader)
+
+    debugImplementation(libs.flipper.network.plugin)
+    releaseImplementation(libs.flipper.noop)
 }
 
 kapt {

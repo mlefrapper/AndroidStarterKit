@@ -3,6 +3,7 @@ agp = "8.6.1"
 coilCompose = "3.0.0-rc01"
 converterMoshi = "2.11.0"
 coreSplashscreen = "1.0.1"
+flipper = "0.269.0"
 hiltAndroid = "2.52"
 hiltNavigationCompose = "1.2.0"
 javaxInject = "1"
@@ -13,14 +14,13 @@ moshiKotlinCodegen = "1.15.1"
 retrofit = "2.11.0"
 roomRuntime = "2.6.1"
 sandwichRetrofit = "2.0.10"
+soloader = "0.12.1"
 timber = "5.0.1"
 spotlessPluginGradle = "6.25.0"
-navigationCompose = "2.8.2"
-runtimeAndroid = "1.7.3"
-foundationLayoutAndroid = "1.7.3"
+navigationCompose = "2.8.3"
 serialization = "1.7.3"
 material3Android = "1.3.0"
-uiTooling = "1.7.3"
+uiTooling = "1.7.4"
 
 [libraries]
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
@@ -31,6 +31,9 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
+flipper = { module = "com.facebook.flipper:flipper", version.ref = "flipper" }
+flipper-network-plugin = { module = "com.facebook.flipper:flipper-network-plugin", version.ref = "flipper" }
+flipper-noop = { module = "com.facebook.flipper:flipper-noop", version.ref = "flipper" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
@@ -40,11 +43,10 @@ moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshiKotlinCodegen" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 sandwich-retrofit = { module = "com.github.skydoves:sandwich-retrofit", version.ref = "sandwichRetrofit" }
+soloader = { module = "com.facebook.soloader:soloader", version.ref = "soloader" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 spotless-plugin-gradle = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "spotlessPluginGradle" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
-androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
-androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
