@@ -8,6 +8,13 @@
 - [Hilt](https://dagger.dev/hilt/): for dependency injection.
 - [Timber](https://github.com/JakeWharton/timber): A logger with a small, extensible API.
 
+## Debugging Tools
+
+This project utilizes Flipper for debugging purposes : 
+
+- **Network Inspection:** Flipper's Network plugin allows you to inspect network requests made by the app, including request and response details, headers, and timing information. This is helpful for debugging network-related issues and understanding API interactions.
+- **Database Inspection:** Flipper's Database plugin enables you to browse and query the Room database used by the app. You can view database schemas, tables, and individual records, making it easier to debug data-related problems.
+
 ## Architecture
 
 ## Getting started
