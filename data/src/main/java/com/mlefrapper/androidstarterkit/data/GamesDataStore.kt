@@ -5,6 +5,7 @@ import com.mlefrapper.androidstarterkit.data.local.room.LocalDataSource
 import com.mlefrapper.androidstarterkit.data.model.Game
 import com.mlefrapper.androidstarterkit.data.remote.RemoteDataSource
 import com.mlefrapper.androidstarterkit.data.remote.model.GameItemDto
+import com.mlefrapper.androidstarterkit.data.remote.model.GameTrailerResponseDto
 import com.mlefrapper.androidstarterkit.data.remote.model.GamesResponseDto
 import com.mlefrapper.androidstarterkit.data.repository.GamesRepository
 import com.mlefrapper.androidstarterkit.data.utils.Range
@@ -20,7 +21,7 @@ class GamesDataStore @Inject constructor(
     private val localDataSource: LocalDataSource,
 ) : GamesRepository {
 
-    override fun getAllGames(): Flow<Resource<List<Game>>> =
+    override fun getAllGames(forceRefresh: Boolean): Flow<Resource<List<Game>>> =
         object : NetworkBoundResource<List<Game>, GamesResponseDto>() {
             override fun loadFromDB(): Flow<List<Game>> {
                 return localDataSource.getAllGames()
@@ -32,7 +33,7 @@ class GamesDataStore @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Game>?): Boolean =
-                data.isNullOrEmpty()
+                data.isNullOrEmpty() || forceRefresh
 
             override suspend fun createCall(): ApiResponse<GamesResponseDto> {
                 return remoteDataSource.getAllGames()
@@ -47,7 +48,7 @@ class GamesDataStore @Inject constructor(
             }
         }.asFlow()
 
-    override fun getHotGames(): Flow<Resource<List<Game>>> =
+    override fun getHotGames(forceRefresh: Boolean): Flow<Resource<List<Game>>> =
         object : NetworkBoundResource<List<Game>, GamesResponseDto>() {
             override fun loadFromDB(): Flow<List<Game>> {
                 return localDataSource
@@ -60,7 +61,7 @@ class GamesDataStore @Inject constructor(
             }
 
             override fun shouldFetch(data: List<Game>?): Boolean =
-                data.isNullOrEmpty()
+                data.isNullOrEmpty() || forceRefresh
 
             override suspend fun createCall(): ApiResponse<GamesResponseDto> {
                 return remoteDataSource.getAllGames(
@@ -114,7 +115,25 @@ class GamesDataStore @Inject constructor(
     }
 
     override fun getGameTrailer(id: Long): Flow<Resource<Game>> {
-        TODO("Not yet implemented")
+        return object : NetworkBoundResource<Game, GameTrailerResponseDto>() {
+            override fun loadFromDB(): Flow<Game> {
+                return localDataSource.getGameDetail(id).map {
+                    Game(it)
+                }
+            }
+
+            override fun shouldFetch(data: Game?): Boolean {
+                return data?.trailerUrl.isNullOrEmpty()
+            }
+
+            override suspend fun createCall(): ApiResponse<GameTrailerResponseDto> {
+                return remoteDataSource.getGameTrailers(id)
+            }
+
+            override suspend fun saveCallResult(data: GameTrailerResponseDto) {
+                localDataSource.updateGameTrailer(id, data.results?.firstOrNull()?.data?.max.orEmpty())
+            }
+        }.asFlow()
     }
 
     override fun searchGame(query: String): Flow<Resource<List<Game>>> {

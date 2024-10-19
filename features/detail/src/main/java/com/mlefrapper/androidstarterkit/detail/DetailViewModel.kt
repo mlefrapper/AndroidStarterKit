@@ -23,6 +23,7 @@ class DetailViewModel @Inject constructor(
 
     fun onInit(gameId: Long) {
         getGameDetails(gameId)
+        getGameTrailer(gameId)
     }
 
     private fun getGameDetails(gameId: Long) {
@@ -56,7 +57,39 @@ class DetailViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    private fun setBookmarked(gameId: Long, isBookmarked: Boolean) {
+    private fun getGameTrailer(gameId: Long) {
+        gameUseCase.getGameTrailer(gameId).onEach { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = true,
+                        )
+                    }
+                }
+
+                is Resource.Error -> {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            error = result.message,
+                        )
+                    }
+                }
+
+                is Resource.Success -> {
+                    _uiState.update {
+                        it.copy(
+                            isLoading = false,
+                            game = result.data,
+                        )
+                    }
+                }
+            }
+        }.launchIn(viewModelScope)
+    }
+
+    fun setBookmarked(gameId: Long, isBookmarked: Boolean) {
         viewModelScope.launch {
             gameUseCase.setIsBookmarked(gameId, isBookmarked)
         }

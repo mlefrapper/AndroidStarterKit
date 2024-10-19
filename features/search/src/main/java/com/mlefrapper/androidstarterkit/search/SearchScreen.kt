@@ -27,6 +27,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.mlefrapper.androidstarterkit.search.components.NoSearchResultsScreen
+import com.mlefrapper.androidstarterkit.search.components.SearchHelpScreen
 import com.mlefrapper.androidstarterkit.ui.R
 import com.mlefrapper.androidstarterkit.ui.components.GameItem
 import com.mlefrapper.androidstarterkit.ui.components.Gap
@@ -39,8 +41,11 @@ import com.mlefrapper.core.navigation.Route
 fun SearchScreen(
     viewModel: SearchViewModel = hiltViewModel<SearchViewModel>(),
     navController: NavHostController,
+    onError: (String) -> Unit = {},
 ) {
     val state by viewModel.uiState.collectAsState()
+
+    state.error?.let(onError)
 
     Column(
         modifier = Modifier
@@ -62,7 +67,7 @@ fun SearchScreen(
         TextField(
             value = state.query,
             onValueChange = {
-                viewModel.searchGames(it)
+                viewModel.onSearchQueryChanged(it)
             },
             textStyle = MaterialTheme.typography.bodyLarge,
             placeholder = {
@@ -85,7 +90,6 @@ fun SearchScreen(
                     ),
                 )
             },
-            trailingIcon = {},
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Neutral5,
                 unfocusedContainerColor = Neutral5,
@@ -104,26 +108,34 @@ fun SearchScreen(
                 ),
         )
         Gap(size = 12.dp)
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(vertical = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            items(
-                items = state.games,
-                key = { it.id },
+        if (state.games.isNotEmpty()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(vertical = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                val game = it
-                GameItem(
-                    game = game,
-                    onItemClick = {
-                        navController.navigate(
-                            route = Route.GameDetails(
-                                gameId = game.id,
-                            ),
-                        )
-                    },
-                )
+                items(
+                    items = state.games,
+                    key = { it.id },
+                ) {
+                    val game = it
+                    GameItem(
+                        game = game,
+                        onItemClick = {
+                            navController.navigate(
+                                route = Route.GameDetails(
+                                    gameId = game.id,
+                                ),
+                            )
+                        },
+                    )
+                }
+            }
+        } else {
+            if (state.query.isNotEmpty()) {
+                NoSearchResultsScreen()
+            } else {
+                SearchHelpScreen()
             }
         }
     }

@@ -3,7 +3,7 @@
     <string name="largest_game_database">Largest Game Database</string>
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
-    <string name="title_bookmark">Bookmark</string>
+    <string name="title_bookmark">Bookmarks</string>
     <string name="action_play_trailer">Play Trailer</string>
     <string name="label_bookmark_description">Save your favorite games and get back whenever you like!</string>
     <string name="metascore">Metascore</string>
@@ -19,4 +19,6 @@
     <string name="what_games_are_you_looking_for">What games are you looking for?</string>
     <string name="search">Search…</string>
     <string name="no_bookmarks">You haven\'t bookmarked any games yet.</string>
+    <string name="no_search_results">No games found for your search.</string>
+    <string name="search_field_empty">Search for your favorite games here.</string>
 </resources>

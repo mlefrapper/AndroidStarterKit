@@ -14,19 +14,39 @@ class MainViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(MainUiState())
     val uiState = _uiState.asStateFlow()
 
-    private fun showMessage(
+    fun showMessage(
         @StringRes snackBarMessageResId: Int,
-    ) = _uiState.update {
-        it.copy(
-            snackBarMessage = SnackBarMessage.from(
-                userMessage = UserMessage.from(
-                    resId = snackBarMessageResId,
-                ),
-                actionLabelMessage = null,
-                withDismissAction = true,
-                duration = SnackbarDuration.Short,
-                onSnackBarResult = {},
+    ) {
+        showMessage(
+            UserMessage.from(
+                resId = snackBarMessageResId,
             ),
         )
+    }
+
+    fun showMessage(
+        snackBarMessage: String,
+    ) {
+        showMessage(
+            UserMessage.from(
+                value = snackBarMessage,
+            ),
+        )
+    }
+
+    private fun showMessage(
+        userMessage: UserMessage,
+    ) {
+        _uiState.update {
+            it.copy(
+                snackBarMessage = SnackBarMessage.from(
+                    userMessage = userMessage,
+                    actionLabelMessage = null,
+                    withDismissAction = true,
+                    duration = SnackbarDuration.Short,
+                    onSnackBarResult = {},
+                ),
+            )
+        }
     }
 }

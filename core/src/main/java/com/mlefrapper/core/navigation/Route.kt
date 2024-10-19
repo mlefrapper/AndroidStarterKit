@@ -30,4 +30,10 @@ sealed class Route {
         override val route: String
             get() = "game_details/$gameId"
     }
+
+    @Serializable
+    data class VideoPlayer(val url: String) : Route() {
+        override val route: String
+            get() = "video_player/$url"
+    }
 }

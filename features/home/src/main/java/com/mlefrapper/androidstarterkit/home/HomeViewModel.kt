@@ -20,18 +20,24 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeScreenState())
     val uiState = _uiState.asStateFlow()
 
-    fun onInit() {
-        getAllGames()
-        getHotGames()
+    fun refresh(fromPullToRefresh: Boolean) {
+        _uiState.update {
+            it.copy(
+                isRefreshingFromPullToRefresh = fromPullToRefresh,
+            )
+        }
+        getAllGames(fromPullToRefresh = fromPullToRefresh)
+        getHotGames(fromPullToRefresh = fromPullToRefresh)
     }
 
-    private fun getAllGames() {
-        gameUseCase.getAllGames().onEach { result ->
+    private fun getAllGames(fromPullToRefresh: Boolean) {
+        gameUseCase.getAllGames(forceRefresh = fromPullToRefresh).onEach { result ->
             when (result) {
                 is Resource.Error -> {
                     _uiState.update {
                         it.copy(
                             isLoading = false,
+                            isRefreshingFromPullToRefresh = false,
                             error = result.message,
                         )
                     }
@@ -41,6 +47,7 @@ class HomeViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             isLoading = true,
+                            isRefreshingFromPullToRefresh = fromPullToRefresh,
                         )
                     }
                 }
@@ -50,6 +57,7 @@ class HomeViewModel @Inject constructor(
                         it.copy(
                             games = result.data,
                             isLoading = false,
+                            isRefreshingFromPullToRefresh = false,
                             error = null,
                         )
                     }
@@ -58,13 +66,14 @@ class HomeViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    private fun getHotGames() {
-        gameUseCase.getHotGames().onEach { result ->
+    private fun getHotGames(fromPullToRefresh: Boolean) {
+        gameUseCase.getHotGames(forceRefresh = fromPullToRefresh).onEach { result ->
             when (result) {
                 is Resource.Error -> {
                     _uiState.update {
                         it.copy(
                             isLoading = false,
+                            isRefreshingFromPullToRefresh = false,
                             error = result.message,
                         )
                     }
@@ -73,6 +82,7 @@ class HomeViewModel @Inject constructor(
                 is Resource.Loading -> {
                     _uiState.update {
                         it.copy(
+                            isRefreshingFromPullToRefresh = fromPullToRefresh,
                             isLoading = true,
                         )
                     }
@@ -82,6 +92,7 @@ class HomeViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             hotGames = result.data,
+                            isRefreshingFromPullToRefresh = false,
                             isLoading = false,
                             error = null,
                         )

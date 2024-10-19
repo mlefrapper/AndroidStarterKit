@@ -10,16 +10,22 @@ class GameInteractor @Inject constructor(
     private val gamesRepository: GamesRepository,
 ) : GameUseCase {
 
-    override fun getAllGames(): Flow<Resource<List<Game>>> {
-        return gamesRepository.getAllGames()
+    override fun getAllGames(forceRefresh: Boolean): Flow<Resource<List<Game>>> {
+        return gamesRepository.getAllGames(forceRefresh = forceRefresh)
     }
 
-    override fun getHotGames(): Flow<Resource<List<Game>>> {
-        return gamesRepository.getHotGames()
+    override fun getHotGames(forceRefresh: Boolean): Flow<Resource<List<Game>>> {
+        return gamesRepository.getHotGames(forceRefresh = forceRefresh)
     }
 
     override fun getGameDetails(gameId: Long): Flow<Resource<Game>> {
         return gamesRepository.getGameDetails(
+            gameId = gameId,
+        )
+    }
+
+    override fun getGameTrailer(gameId: Long): Flow<Resource<Game>> {
+        return gamesRepository.getGameTrailer(
             gameId = gameId,
         )
     }

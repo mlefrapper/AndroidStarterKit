@@ -40,6 +40,7 @@ fun GamePoster(
     modifier: Modifier = Modifier,
     onShareClick: (Long) -> Unit = {},
     onBackClick: () -> Unit = {},
+    onGameTrailerClick: (String) -> Unit = {},
 ) {
     Box(
         modifier = modifier
@@ -99,7 +100,9 @@ fun GamePoster(
                     modifier = Modifier
                         .size(50.dp)
                         .background(Color.White, CircleShape)
-                        .clickable {},
+                        .clickable {
+                            game.trailerUrl?.let(onGameTrailerClick)
+                        },
                 ) {
                     Image(
                         painter = painterResource(

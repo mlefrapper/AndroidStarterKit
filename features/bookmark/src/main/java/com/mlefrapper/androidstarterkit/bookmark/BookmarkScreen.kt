@@ -67,34 +67,34 @@ fun BookmarkScreen(
                 style = MaterialTheme.typography.bodyMedium,
                 color = Neutral50,
             )
-        }
 
-        if (state.games.isNotEmpty()) {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = Color.White),
-                contentPadding = PaddingValues(vertical = 24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                items(
-                    items = state.games,
-                    key = { it.id },
+            if (state.games.isNotEmpty()) {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.White),
+                    contentPadding = PaddingValues(vertical = 24.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    GameItem(
-                        game = it,
-                        onItemClick = { gameId ->
-                            navController.navigate(
-                                route = Route.GameDetails(
-                                    gameId = gameId,
-                                ),
-                            )
-                        },
-                    )
+                    items(
+                        items = state.games,
+                        key = { it.id },
+                    ) {
+                        GameItem(
+                            game = it,
+                            onItemClick = { gameId ->
+                                navController.navigate(
+                                    route = Route.GameDetails(
+                                        gameId = gameId,
+                                    ),
+                                )
+                            },
+                        )
+                    }
                 }
+            } else {
+                NoBookmarksScreen()
             }
-        } else {
-            NoBookmarksScreen()
         }
     }
 }

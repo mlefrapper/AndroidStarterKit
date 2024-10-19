@@ -98,6 +98,9 @@ class MainActivity : ComponentActivity() {
                         ) {
                             DestinationsNavHost(
                                 navController = navController,
+                                onError = { message ->
+                                    mainViewModel.showMessage(message)
+                                },
                             )
                         }
                     }

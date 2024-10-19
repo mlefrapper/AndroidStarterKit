@@ -2,10 +2,13 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.mlefrapper.androidstarterkit.ui"
+    namespace = "com.mlefrapper.androidstarterkit.videoplayer"
     compileSdk = 34
 
     defaultConfig {
@@ -13,14 +16,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
     }
 
     buildTypes {
@@ -42,24 +37,13 @@ android {
 }
 
 dependencies {
-    api(project(path = ":data"))
+    api(project(":ui"))
+    api(project(":core"))
+    api(project(":data"))
 
-    // Coil
-    api(libs.coil.compose)
-    api(libs.coil.network.okhttp)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    // Navigation compose
-    api(libs.androidx.hilt.navigation.compose)
-    api(libs.androidx.navigation.compose)
-    api(libs.kotlinx.serialization.json)
-    api(libs.ui.tooling)
-
-    // Pull to refresh
-    api(libs.accompanist.swiperefresh)
-
-    // Material 3
-    api(libs.androidx.material3.android)
-
-    // Splashscreen
-    api(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.media3.ui)
+    implementation(libs.androidx.media3.exoplayer)
 }

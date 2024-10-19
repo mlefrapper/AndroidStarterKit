@@ -99,6 +99,7 @@ dependencies {
     api(project(":features:search"))
     api(project(":features:bookmark"))
     api(project(":features:detail"))
+    api(project(":features:videoplayer"))
 
     // Hilt
     implementation(libs.hilt.android)

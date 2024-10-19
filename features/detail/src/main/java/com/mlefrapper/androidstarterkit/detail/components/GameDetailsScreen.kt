@@ -10,17 +10,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,8 +36,11 @@ import com.mlefrapper.androidstarterkit.ui.theme.Primary70
 @Composable
 fun GameDetailsScreen(
     game: Game,
+    isBookmarked: Boolean = false,
+    onBookmarkChanged: () -> Unit,
     onShareClick: (Long) -> Unit = {},
     onBackClick: () -> Unit = {},
+    onGameTrailerClick: (String) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -59,16 +61,13 @@ fun GameDetailsScreen(
                 onBackClick = {
                     onBackClick.invoke()
                 },
+                onGameTrailerClick = { url ->
+                    onGameTrailerClick.invoke(url)
+                },
             )
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(
-                        shape = RoundedCornerShape(
-                            topStart = 20.dp,
-                            topEnd = 20.dp,
-                        ),
-                    )
                     .background(
                         color = Color.White,
                     )
@@ -87,7 +86,7 @@ fun GameDetailsScreen(
                     )
                     Gap(size = 8.dp)
                     Icon(
-                        imageVector = Icons.Default.Favorite,
+                        imageVector = if (isBookmarked) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = null,
                         tint = Primary70,
                         modifier = Modifier
@@ -95,7 +94,7 @@ fun GameDetailsScreen(
                             .padding(top = 4.dp)
                             .clickable(
                                 onClick = {
-                                    // savedState = !savedState
+                                    onBookmarkChanged.invoke()
                                 },
                             ),
                     )
@@ -172,6 +171,10 @@ fun GameDetailsScreenPreview() {
             trailerUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         )
 
-        GameDetailsScreen(game = sampleGame)
+        GameDetailsScreen(
+            game = sampleGame,
+            isBookmarked = false,
+            onBookmarkChanged = {},
+        )
     }
 }
